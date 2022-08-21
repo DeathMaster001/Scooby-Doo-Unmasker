@@ -7,6 +7,9 @@ A separate windowed tool meant for Scooby-Doo Unmasked. Intended to be used by s
 - Input Viewer and Position Viewer
 - Full access to freely change any value of your choice
 
+## Unmasked Lua Tool
+If your interested I've made a similar tool that works with the Dolphin Lua Core emulator, check it out [here](https://github.com/DeathMaster001/Scooby-Doo-Unmasked-Lua-Tool).
+
 ## Original Projects
 
 [dme.net](https://github.com/HDBSD/dme.net)\
