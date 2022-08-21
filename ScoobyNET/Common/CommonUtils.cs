@@ -10,6 +10,11 @@ namespace DolphinComm
     {
         public static void SwapByteArray(ref byte[] bytes)
         {
+
+            Array.Reverse(bytes);
+
+            
+            /*
             // if array is odd we set limit to a.Length - 1.
             int limit = bytes.Length - (bytes.Length % 2);
             if (limit < 1) throw new Exception("array too small to be swapped.");
@@ -19,10 +24,17 @@ namespace DolphinComm
                 bytes[i] = bytes[i + 1];
                 bytes[i + 1] = temp;
             }
+            */
         }
 
         public static byte[] SwapByteArray(byte[] bytes)
         {
+
+
+            Array.Reverse(bytes);
+
+            /*
+
             // if array is odd we set limit to a.Length - 1.
             int limit = bytes.Length - (bytes.Length % 2);
             if (limit < 1) throw new Exception("array too small to be swapped.");
@@ -32,6 +44,7 @@ namespace DolphinComm
                 bytes[i] = bytes[i + 1];
                 bytes[i + 1] = temp;
             }
+            */
 
             return bytes;
         }
