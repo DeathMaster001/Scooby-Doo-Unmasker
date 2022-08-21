@@ -54,11 +54,11 @@ namespace DolphinComm.DolphinProcess.Windows
             for (
                 IntPtr p = IntPtr.Zero;
                 VirtualQueryEx(m_hDolphin, p, out info, (uint)Marshal.SizeOf(info)) == (uint)Marshal.SizeOf(info);
-                p = (IntPtr)((int)p + (int)info.RegionSize)
+                p = (IntPtr)((Int64)p + (Int64)info.RegionSize)
                 )
             {
                 // check the region size so that we know its region 2
-                if ((int)info.RegionSize == 0x4000000)
+                if ((Int64)info.RegionSize == 0x4000000)
                 {
                     UInt64 regionBaseAddress = 0;
                     regionBaseAddress = (UInt64)info.BaseAddress;
@@ -81,7 +81,7 @@ namespace DolphinComm.DolphinProcess.Windows
                     }
                     Debug.WriteLine("MEM2?");
                 }
-                else if (!MEM1Found && (int)info.RegionSize == 0x2000000 && info.Type == TypeEnum.MEM_MAPPED)
+                else if (!MEM1Found && (Int64)info.RegionSize == 0x2000000 && info.Type == TypeEnum.MEM_MAPPED)
                 {
                     // Here, it's likely the right page, but it can happen that multiple pages with these criteria
                     // exists and have nothing to do with the emulated memory. Only the right page has valid
@@ -96,7 +96,7 @@ namespace DolphinComm.DolphinProcess.Windows
                     {
                         if (wsInfo.VirtualAttributes.Invalid == 0)
                         {
-                            m_emuRAMAddressStart = (uint)info.BaseAddress;
+                            m_emuRAMAddressStart = (UInt64)info.BaseAddress;
                             MEM1Found = true;
                         }
                     }
