@@ -1,5 +1,11 @@
 # Unmasked Dolphin Tool
-A tool meant for Scooby-Doo Unmasked!
+A separate windowed tool meant for Scooby-Doo Unmasked. Intended to be used by speedrunners, glitch hunters and TAS creators.
+
+## Planned Features (All Toggleable)
+- Stats (Health, Total Health, Mubber, Level Name's)
+- Collectables (Food, Clues and Costume Tokens)
+- Input Viewer and Position Viewer
+- Full access to freely change any value of your choice
 
 ## Original Projects
 
