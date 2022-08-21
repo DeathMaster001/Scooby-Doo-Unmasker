@@ -90,21 +90,30 @@ namespace ScoobyNET
 
         private void onHookAttempt()
         {
-            onUnhookShow();
             DolphinAccessor.hook();
             updateDolphinHookingStatus();
-            watchTimer.Start();
-            updateVariablesTimer1.Start();
-            updateVariablesTimer2.Start();
+            
             byte[] buff = new byte[6];
             DolphinAccessor.readFromRAM(0x0, ref buff, 6, true);
-            if(Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DE78")
+
+            // if game is the wrong game and is hooked
+
+            if(Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DE78" && DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.hooked)
             {
                 MessageBox.Show("Unsupported game has been detected. Only Scooby-Doo Unmasked! (USA) is supported.");
                 onUnHookAttempt();
                 return;
             }
+
+            // enable controls
+
+            onUnhookShow();
+
+            // start timers
+
             watchTimer.Start();
+            updateVariablesTimer1.Start();
+            updateVariablesTimer2.Start();
         }
 
         private void firstHookAttempt()
@@ -124,15 +133,15 @@ namespace ScoobyNET
         {
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
-                button1.Enabled = false;
-                checkBox1.Enabled = false;
-                checkBox2.Enabled = false;
+                button1.Visible = false;
+                checkBox1.Visible = false;
+                checkBox2.Visible = false;
         }
         private void onUnhookShow()
         {
-            button1.Enabled = true;
-            checkBox1.Enabled = true;
-            checkBox2.Enabled = true;
+            button1.Visible = true;
+            checkBox1.Visible = true;
+            checkBox2.Visible = true;
         }
 
         private void WatchTimer_Tick(object sender, EventArgs e)
@@ -169,7 +178,7 @@ namespace ScoobyNET
             }
             else
             {
-                checkBox2.Text = "Scooby's Total Health: " + Unmasked.getTotalHealth().ToString();
+                //checkBox2.Text = "Scooby's Total Health: " + Unmasked.getTotalHealth().ToString();
             }
         }
     }
