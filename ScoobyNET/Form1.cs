@@ -16,6 +16,8 @@ namespace ScoobyNET
     public partial class Form1 : Form
     {
         private Timer watchTimer;
+        private Timer updateVariablesTimer1;
+        private Timer updateVariablesTimer2;
 
         public Form1()
         {
@@ -23,6 +25,12 @@ namespace ScoobyNET
             watchTimer = new Timer();
             watchTimer.Interval = 100;
             watchTimer.Tick += WatchTimer_Tick;
+            updateVariablesTimer1 = new Timer();
+            updateVariablesTimer2 = new Timer();
+            updateVariablesTimer1.Interval = 100;
+            updateVariablesTimer2.Interval = 100;
+            updateVariablesTimer1.Tick += checkBox1_CheckedStateChanged;
+            updateVariablesTimer2.Tick += checkBox2_CheckStateChanged;
             DolphinAccessor.init();
             firstHookAttempt();
         }
@@ -42,9 +50,7 @@ namespace ScoobyNET
         //Test button (delete later)
         private void button1_Click(object sender, EventArgs e)
         {
-            byte[] buff = new byte[6];
-            DolphinAccessor.readFromRAM(0x0,ref buff,6,true);
-            MessageBox.Show(Encoding.UTF8.GetString(buff,0,buff.Length));
+            MessageBox.Show(Unmasked.getHealth().ToString());
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,6 +58,11 @@ namespace ScoobyNET
             Settings settings = new Settings();
             settings.ShowDialog();
             settings.Dispose();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void updateDolphinHookingStatus()
@@ -79,13 +90,17 @@ namespace ScoobyNET
 
         private void onHookAttempt()
         {
+            onUnhookShow();
             DolphinAccessor.hook();
             updateDolphinHookingStatus();
+            watchTimer.Start();
+            updateVariablesTimer1.Start();
+            updateVariablesTimer2.Start();
             byte[] buff = new byte[6];
             DolphinAccessor.readFromRAM(0x0, ref buff, 6, true);
             if(Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DE78")
             {
-                MessageBox.Show("Unsupported game has been detected.");
+                MessageBox.Show("Unsupported game has been detected. Only Scooby-Doo Unmasked! (USA) is supported.");
                 onUnHookAttempt();
                 return;
             }
@@ -99,15 +114,63 @@ namespace ScoobyNET
 
         private void onUnHookAttempt()
         {
+            onUnhookHide();
             watchTimer.Stop();
             DolphinAccessor.unHook();
             updateDolphinHookingStatus();
         }
+
+        private void onUnhookHide()
+        {
+                checkBox1.Checked = false;
+                checkBox2.Checked = false;
+                button1.Enabled = false;
+                checkBox1.Enabled = false;
+                checkBox2.Enabled = false;
+        }
+        private void onUnhookShow()
+        {
+            button1.Enabled = true;
+            checkBox1.Enabled = true;
+            checkBox2.Enabled = true;
+        }
+
         private void WatchTimer_Tick(object sender, EventArgs e)
         {
-            byte[] buff = new byte[6];
-            DolphinAccessor.readFromRAM(0x0, ref buff, 6, true);
-            Debug.WriteLine(Encoding.UTF8.GetString(buff, 0, buff.Length));
+            //byte[] buff = new byte[6];
+            //DolphinAccessor.readFromRAM(0x0, ref buff, 6, true);
+            //Debug.WriteLine(Encoding.UTF8.GetString(buff, 0, buff.Length));
+        }
+        //remove later
+        private void VariablesTimer_Tick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+        private void VariablesTimer2_Tick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+        private void checkBox1_CheckedStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked != true)
+            {
+                checkBox1.Text = "Scooby's Health: ";
+            }
+            else
+            {
+                checkBox1.Text = "Scooby's Health: " + Unmasked.getHealth().ToString();
+            }
+        }
+        private void checkBox2_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked != true)
+            {
+                checkBox2.Text = "Scooby's Total Health: ";
+            }
+            else
+            {
+                checkBox2.Text = "Scooby's Total Health: " + Unmasked.getTotalHealth().ToString();
+            }
         }
     }
 }
