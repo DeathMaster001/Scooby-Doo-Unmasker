@@ -1,7 +1,7 @@
 # Unmasked Dolphin Tool
 A tool meant for Scooby-Doo Unmasked!
 
-## Orignal Projects
+## Original Projects
 
 [dme.net](https://github.com/HDBSD/dme.net)\
 [Dolphin Memory Engine](https://github.com/aldelaro5/Dolphin-memory-engine/)
