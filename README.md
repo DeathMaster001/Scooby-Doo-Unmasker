@@ -1,5 +1,5 @@
 # Scooby-Doo Unmasked Windowed Tool
-A separate windowed tool meant for Scooby-Doo Unmasked. Intended to be used by speedrunners, glitch hunters and TAS creators.
+A separate windowed tool made specifically for the GameCube game Scooby-Doo! Unmasked (G5DE78). Intended to be used by speedrunners, glitch hunters and TAS creators.
 
 ## Planned Features (All Toggleable)
 - Stats (Health, Total Health, Mubber, Level Name's)
