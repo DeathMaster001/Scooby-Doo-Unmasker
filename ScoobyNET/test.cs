@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ScoobyNET
 {
-    public partial class Settings : Form
+    public partial class test : Form
     {
-        public Settings()
+        public test()
         {
             InitializeComponent();
         }
