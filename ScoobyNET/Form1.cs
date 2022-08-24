@@ -41,13 +41,19 @@ namespace ScoobyNET
             }
         }
 
+
+        DXUI.Overlay overlay;
+
         //Test button (delete later)
         private void button1_Click(object sender, EventArgs e)
         {
-            testing = new test();
-            UI.Display test = new UI.Display(testing);
+            //testing = new test();
+            //UI.Display test = new UI.Display(testing);
+            //test.Start();
 
-            test.Start();
+            overlay = new DXUI.Overlay();
+            overlay.Run();
+
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -140,10 +146,12 @@ namespace ScoobyNET
             if (DolphinAccessor.getStatus() != DolphinAccessor.DolphinStatus.hooked)
                 onUnHookAttempt();
 
+            if (overlay == null)
+                return;
             
-            if (Health_chkbx.Checked)
+            if (Health_chkbx.Checked )
             {
-                testing.Controls["label1"].Text = "Health: " + Unmasked.Memory.getHealth().ToString();
+                 overlay.Screentext = "Health: " + Unmasked.Memory.getHealth().ToString();
             }
 
         }

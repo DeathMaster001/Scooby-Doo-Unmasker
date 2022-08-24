@@ -53,7 +53,19 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GameOverlay, Version=4.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GameOverlay.Net.4.3.1\lib\net47\GameOverlay.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct2D1.4.2.0\lib\net45\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DXGI.4.2.0\lib\net45\SharpDX.DXGI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows" />
@@ -72,14 +84,17 @@
     <Compile Include="Common\CommonTypes.cs" />
     <Compile Include="Common\CommonUtils.cs" />
     <Compile Include="Common\MemoryCommon.cs" />
+    <Compile Include="DXUI\Imports.cs" />
+    <Compile Include="DXUI\Overlay.cs" />
     <Compile Include="test.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Data.cs" />
-    <Compile Include="UI\Display.cs" />
+    <None Include="packages.config" />
+    <None Include="UI\Data.cs" />
+    <None Include="UI\Display.cs" />
     <Compile Include="DolphinProcess\DolphinAccessor.cs" />
     <Compile Include="DolphinProcess\IDolphinProcess.cs" />
     <Compile Include="DolphinProcess\Windows\WindowsDolphinProcess.cs" />
@@ -91,9 +106,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\FPSCounter.cs" />
-    <Compile Include="UI\Imports.cs" />
-    <Compile Include="UI\ThreadedComponent.cs" />
+    <None Include="UI\Imports.cs" />
+    <None Include="UI\ThreadedComponent.cs" />
     <Compile Include="Unmasked\Collectibles.cs" />
     <Compile Include="Unmasked\Helpers.cs" />
     <Compile Include="Unmasked\Level.cs" />
@@ -115,7 +129,6 @@
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -128,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\README.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
