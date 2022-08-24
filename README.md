@@ -1,4 +1,4 @@
-# Unmasked Dolphin Tool
+# Scooby-Doo Unmasked Windowed Tool
 A separate windowed tool meant for Scooby-Doo Unmasked. Intended to be used by speedrunners, glitch hunters and TAS creators.
 
 ## Planned Features (All Toggleable)
