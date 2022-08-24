@@ -77,9 +77,6 @@ namespace ScoobyNET.UI
                 }
             }
 
-            
-
-
             Update(Imports.GetClientRectangle(gameWindow));
         }
 
