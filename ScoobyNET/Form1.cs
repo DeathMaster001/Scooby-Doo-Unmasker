@@ -47,13 +47,16 @@ namespace ScoobyNET
         //Test button (delete later)
         private void button1_Click(object sender, EventArgs e)
         {
-            //testing = new test();
-            //UI.Display test = new UI.Display(testing);
-            //test.Start();
-
-            overlay = new DXUI.Overlay();
-            overlay.Run();
-
+            if (overlay == null)
+            {
+                overlay = new DXUI.Overlay();
+                overlay.Run();
+            }
+            else
+            {
+                overlay.Dispose();
+                overlay = null;
+            }
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,21 +124,20 @@ namespace ScoobyNET
             watchTimer.Stop();
             DolphinAccessor.unHook();
             updateDolphinHookingStatus();
+            if (overlay != null)
+            {
+                overlay.Dispose();
+                overlay = null;
+            }
         }
 
         private void onUnhookHide()
         {
-                Health_chkbx.Checked = false;
-                FoodDisplay_chkbx.Checked = false;
-                button1.Visible = false;
-                Health_chkbx.Visible = false;
-                FoodDisplay_chkbx.Visible = false;
+            Settings_grp.Enabled = false;
         }
         private void onUnhookShow()
         {
-            button1.Visible = true;
-            Health_chkbx.Visible = true;
-            FoodDisplay_chkbx.Visible = true;
+            Settings_grp.Enabled = true;
         }
 
         private void WatchTimer_Tick(object sender, EventArgs e)
@@ -148,8 +150,10 @@ namespace ScoobyNET
 
             if (overlay == null)
                 return;
-            
-            if (Health_chkbx.Checked )
+
+            overlay.Screentext = "";
+
+            if (Health_chkbx.Checked)
             {
                  overlay.Screentext = "Health: " + Unmasked.Memory.getHealth().ToString();
             }

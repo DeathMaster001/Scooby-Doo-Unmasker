@@ -50,7 +50,8 @@ namespace ScoobyNET.DXUI
 			{
 				StringBuilder message = new StringBuilder(1000);
 				Imports.SendMessage(handle, Imports.WM_GETTEXT, message.Capacity, message);
-				if (message.ToString().Contains("G5DE78"))
+				string title = message.ToString();
+				if (title.Contains("FPS") && title.Contains("VPS"))
 				{
 					gameWindow = handle;
 					break;
@@ -153,6 +154,7 @@ namespace ScoobyNET.DXUI
 				.Append("FrameTime: ").Append(e.FrameTime.ToString().PadRight(padding))
 				.Append("FrameCount: ").Append(e.FrameCount.ToString().PadRight(padding))
 				.Append("DeltaTime: ").Append(e.DeltaTime.ToString().PadRight(padding))
+				.Append("\n")
 				.ToString();
 #else
 			string infoText = "";
@@ -160,7 +162,7 @@ namespace ScoobyNET.DXUI
 
 			gfx.ClearScene();
 
-			gfx.DrawText(_fonts["consolas"], 30.0f, _brushes["green"], 11, 30, infoText + "\n" + Screentext);
+			gfx.DrawText(_fonts["consolas"], 15.0f, _brushes["green"], 11, 30, infoText + Screentext);
 		}
 
 		private void DrawRandomFigure(Graphics gfx, float x, float y)
