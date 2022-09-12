@@ -145,7 +145,7 @@ namespace ScoobyNET.DXUI
 		{
 			var gfx = e.Graphics;
 
-			var padding = 16;
+			var padding = 8;
 
 #if DEBUG
 
@@ -162,7 +162,7 @@ namespace ScoobyNET.DXUI
 
 			gfx.ClearScene();
 
-			gfx.DrawText(_fonts["consolas"], 15.0f, _brushes["green"], 11, 30, infoText + Screentext);
+			gfx.DrawText(_fonts["consolas"], 14.0f, _brushes["green"], 11, 30, infoText + Screentext);
 		}
 
 		private void DrawRandomFigure(Graphics gfx, float x, float y)
