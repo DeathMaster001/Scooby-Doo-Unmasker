@@ -13,18 +13,21 @@ using System.Diagnostics;
 
 namespace ScoobyNET
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         private Timer watchTimer;
+        private Timer writeTimer;
 
-        private Form testing;
-
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
             watchTimer = new Timer();
             watchTimer.Interval = 100;
             watchTimer.Tick += WatchTimer_Tick;
+            writeTimer = new Timer();
+            writeTimer.Interval = 10;
+            writeTimer.Tick += WriteTimer_Tick;
+            writeTimer.Start();
             DolphinAccessor.init();
             firstHookAttempt();
         }
@@ -40,7 +43,6 @@ namespace ScoobyNET
                 onHookAttempt();
             }
         }
-
 
         DXUI.Overlay overlay;
 
@@ -64,6 +66,17 @@ namespace ScoobyNET
             Application.Exit();
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("A memory value viewer made for Scooby-Doo Unmasked! made for use with the emulator Dolphin." +
+                "Shows various in game values normally not seen during gameplay." +
+                "\n\nThis program is licensed under the MIT License." +
+                "You should have recieved a copy of the MIT license along with this program." +
+                "\n\nCredits:\nDeathMaster001 for coding and window design.\nHDBSD for the majority of the coding." +
+                "\nClimbingCoder for finding the majority of the memory values." +
+                "\nSchnert for finding the Position Data/Pointer for Scooby.", "About Unmasked Tool", MessageBoxButtons.OK);
+        }
+
         private void updateDolphinHookingStatus()
         {
             switch(DolphinAccessor.getStatus())
@@ -73,7 +86,7 @@ namespace ScoobyNET
                     hook_button.Text = "Unhook";
                     break;
                 case DolphinAccessor.DolphinStatus.notRunning:
-                    hooked_lbl.Text = "Cannot hook to Dolphin, process is not running";
+                    hooked_lbl.Text = "Cannot hook to Dolphin, the process is not running";
                     hook_button.Text = "Hook";
                     break;
                 case DolphinAccessor.DolphinStatus.noEmu:
@@ -115,6 +128,7 @@ namespace ScoobyNET
 
         private void firstHookAttempt()
         {
+
             onHookAttempt();
         }
 
@@ -133,11 +147,16 @@ namespace ScoobyNET
 
         private void onUnhookHide()
         {
-            Settings_grp.Enabled = false;
+            Stats_grp.Enabled = false;
         }
         private void onUnhookShow()
         {
-            Settings_grp.Enabled = true;
+            Stats_grp.Enabled = true;
+        }
+
+        private void WriteTimer_Tick(object sender, EventArgs e)
+        {
+            
         }
 
         private void WatchTimer_Tick(object sender, EventArgs e)
@@ -151,12 +170,65 @@ namespace ScoobyNET
             if (overlay == null)
                 return;
 
-            overlay.Screentext = "";
+            overlay.Screentext = "\n";
 
+            if (LevelDisplay_chkbx.Checked)
+            {
+                overlay.Screentext += "\nLevel Name: " + Unmasked.Level.getLevelName();
+            }
+
+            //Shows Health on screen when health checkbox is checked
             if (Health_chkbx.Checked)
             {
-                 overlay.Screentext = "Health: " + Unmasked.Memory.getHealth().ToString();
+                 overlay.Screentext += "\nHealth: " + Unmasked.Memory.getHealth().ToString();
             }
+
+            //Shows Scooby's X,Y,Z Position on screen when the position checkbox is checked
+            if (POSDisplay_chkbx.Checked)
+            {
+                float[] posCoords = Unmasked.Memory.getPosition();
+                overlay.Screentext += $"\nPosition:\n\tX: {posCoords[0].ToString("0.000")}\n\tY: {posCoords[1].ToString("0.000")}\n\tZ: {posCoords[2].ToString("0.000")}";
+            }
+
+            //Shows Food on screen when food checkbox is checked
+            if (FoodDisplay_chkbx.Checked)
+            {
+                overlay.Screentext += "\nFood: ";
+                Dictionary<string, bool> levelFoods = Unmasked.Collectibles.getLevelFoods();
+
+                //foreach loop writes each food to screen
+                foreach(string food in levelFoods.Keys)
+                {
+                    overlay.Screentext += "\n" + food + " " + (levelFoods[food] ? "[*]" : "[]");
+                }
+            }
+
+            //Shows Clues on screen when Clue checkbox is checked
+            if (ClueDisplay_chkbx.Checked)
+            {
+                overlay.Screentext += "\nClues: ";
+                Dictionary<string, bool> levelClues = Unmasked.Collectibles.getLevelClues();
+
+                //foreach loop writes each food to screen
+                foreach (string clue in levelClues.Keys)
+                {
+                    overlay.Screentext += "\n" + clue + " " + (levelClues[clue] ? "[*]" : "[]");
+                }
+            }
+
+            if (TrapDisplay_chkbx.Checked)
+            {
+                overlay.Screentext += "\nTraps: ";
+                Dictionary<string, bool> levelTraps = Unmasked.Collectibles.getLevelTraps();
+
+                //foreach loop writes each food to screen
+                foreach (string trap in levelTraps.Keys)
+                {
+                    overlay.Screentext += "\n" + trap + " " + (levelTraps[trap] ? "[*]" : "[]");
+                }
+            }
+
+            overlay.Screentext = overlay.Screentext.Remove(0, 1);
 
         }
     }
