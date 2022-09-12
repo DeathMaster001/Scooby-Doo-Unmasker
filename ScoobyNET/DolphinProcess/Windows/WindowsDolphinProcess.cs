@@ -137,6 +137,7 @@ namespace DolphinComm.DolphinProcess.Windows
                         case 2:
                         case 4:
                         case 8:
+                        case 12:
                             Common.SwapByteArray(ref buffer);
                             break;
                     }
