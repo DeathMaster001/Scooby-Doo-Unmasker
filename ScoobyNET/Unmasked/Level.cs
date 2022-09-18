@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DolphinComm;
 
 namespace ScoobyNET.Unmasked
 {
@@ -40,7 +41,15 @@ namespace ScoobyNET.Unmasked
 
 		public static string getLevelName()
         {
-			return levelLookup[Memory.getLevel()];
-        }
+            if (levelLookup.TryGetValue(Memory.getLevel(), out string value))
+            {
+				return value;
+			}
+            else
+            {
+				DolphinAccessor.unHook();
+				return "";
+            }
+		}
     }
 }
