@@ -12,28 +12,41 @@ namespace ScoobyNET.Unmasked
         public static uint getHealth()
         {
             byte[] buff = new byte[4];
-            DolphinAccessor.readFromRAM(0x559900, ref buff, 4, true);
+
+            if (!DolphinAccessor.readFromRAM(0x559900, ref buff, 4, true))
+            {
+                DolphinAccessor.unHook();
+                return BitConverter.ToUInt32(buff, 0);
+            }
             return BitConverter.ToUInt32(buff, 0);
         }
 
-        public static uint getMubber()
+        /*public static uint getMubber()
         {
             byte[] buff = new byte[4];
             DolphinAccessor.readFromRAM(0x559908, ref buff, 4, true);
             return BitConverter.ToUInt32(buff, 0);
-        }
+        }*/
 
         public static uint getLevel()
         {
             byte[] buff = new byte[1];
-            DolphinAccessor.readFromRAM(0x5599F1, ref buff, 1, true);
+
+            if (!DolphinAccessor.readFromRAM(0x5599F1, ref buff, 1, true))
+            {
+                DolphinAccessor.unHook();
+            }
             return buff[0];
         }
 
         public static float[] getPosition()
         {
             byte[] buff = new byte[4];
-            DolphinAccessor.readFromRAM(0x558854, ref buff, 4, true);
+
+            if (!DolphinAccessor.readFromRAM(0x558854, ref buff, 4, true))
+            {
+                DolphinAccessor.unHook();
+            }
             uint baseaddr = BitConverter.ToUInt32(buff, 0);
 
             if(baseaddr == 0)
@@ -42,7 +55,10 @@ namespace ScoobyNET.Unmasked
             baseaddr -= 0x80000000;
             buff = new byte[12];
 
-            DolphinAccessor.readFromRAM(baseaddr + 0x30, ref buff, 12, true);
+            if (!DolphinAccessor.readFromRAM(baseaddr + 0x30, ref buff, 12, true))
+            {
+                DolphinAccessor.unHook();
+            }
 
             float[] coordinates = new float[3];
             coordinates[0] = BitConverter.ToSingle(buff, 8);
