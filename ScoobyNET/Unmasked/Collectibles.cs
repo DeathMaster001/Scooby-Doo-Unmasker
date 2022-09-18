@@ -1,11 +1,6 @@
 ﻿// based on https://github.com/DeathMaster001/Scooby-Doo-Unmasked-Lua-Tool/blob/main/sdu/collectibles.lua
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime;
 using DolphinComm;
 using System.Collections;
 
@@ -60,32 +55,43 @@ namespace ScoobyNET.Unmasked
 			[22] = new string[] { "?", "?", "Cotton Candy", "Cabbage", "Shrimp", "Broccoli", "Hot Pepper", "Eggplant" },	//"Undersea",
 		};
 
+		private static Dictionary<uint, string[]> mubberBitMap = new Dictionary<uint, string[]>
+		{
+			[6] = new string[] { "?", "?", "?", "?", "?", "?", "Chocolate Bar75", "?" },									//"MFM 1",
+			[8] = new string[] { "?", "?", "?", "?", "?", "Apple65", "?", "?" },											//"Cookie Factory",
+			[9] = new string[] { "?", "?", "?", "?", "?", "?", "?", "Pepperoni120" },										//"Sewers",
+			[11] = new string[] { "?", "?", "?", "?", "?", "?", "?", "Carrot275" },											//"Temple",
+			[14] = new string[] { "?", "?", "?", "?", "Broccoli185", "?", "?", "?" },										//"Haunted House",
+			[17] = new string[] { "?", "?", "?", "?", "?", "?", "?", "Eggplant230" },										//"Circus",
+			[20] = new string[] { "?", "?", "?", "?", "?", "Marshmallows190", "?", "?" },									//"Dino",
+			[22] = new string[] { "?", "?", "Cotton Candy230", "?", "?", "?", "?", "?" },    //"Undersea",
+		};
+
 		public static Dictionary<string, bool>getLevelFoods()
         {
 			Dictionary<string, bool> levelFoods = new Dictionary<string, bool>();
 
-			uint lvl = Memory.getLevel();
+            uint lvl = Memory.getLevel();
 			uint? lvlFlagAddr = levelFoodMap[lvl];
 
 			if (lvlFlagAddr.HasValue)
-            {
+			{
 				byte[] buff = new byte[1];
+
 				DolphinAccessor.readFromRAM((uint)lvlFlagAddr, ref buff, 1, false);
 
 				BitArray foodFlags = new BitArray(buff);
 				Helpers.reverseBits(foodFlags);
 
 				for (int i = 0; i <= 7; i++ )
-                {
+				{
 					if (foodBitMap[lvl][i] != "?")
-                    {
+					{
 						levelFoods.Add(foodBitMap[lvl][i],  foodFlags[i]);
-                    }
-                }
-            }
-
+					}
+				}
+			}
 			return levelFoods;
-
 		}
 
 		private static Dictionary<uint, List<uint>> levelClueMap = new Dictionary<uint, List<uint>>
@@ -141,25 +147,32 @@ namespace ScoobyNET.Unmasked
 			uint lvl = Memory.getLevel();
 			List<uint> lvlFlagAddr = levelClueMap[lvl];
 
-			if (lvlFlagAddr.Any())
+			if (lvlFlagAddr == null)
+			{
+				return levelClues;
+			}
+			else
 			{
 				BitArray clueFlags;
 
 				if (lvlFlagAddr.Count == 1)
 				{
 					byte[] buff = new byte[1];
-                    DolphinAccessor.readFromRAM(lvlFlagAddr[0], ref buff, 1, false);
+					DolphinAccessor.readFromRAM(lvlFlagAddr[0], ref buff, 1, false);
+
 					clueFlags = new BitArray(buff);
 					Helpers.reverseBits(clueFlags);
 				}
 				else
-                {
+				{
 					byte[] buff = new byte[1];
 					byte[] buff2 = new byte[2];
+
 					DolphinAccessor.readFromRAM(lvlFlagAddr[0], ref buff, 1, false);
-					
+
 					buff2[0] = buff[0];
 					buff = new byte[1];
+
 					DolphinAccessor.readFromRAM(lvlFlagAddr[1], ref buff, 1, false);
 
 					buff2[1] = buff[0];
@@ -232,6 +245,7 @@ namespace ScoobyNET.Unmasked
 			if (lvlFlagAddr.HasValue)
 			{
 				byte[] buff = new byte[1];
+
 				DolphinAccessor.readFromRAM((uint)lvlFlagAddr, ref buff, 1, false);
 
 				BitArray trapFlags = new BitArray(buff);
@@ -247,6 +261,70 @@ namespace ScoobyNET.Unmasked
 			}
 
 			return levelTraps;
+
+		}
+
+		private static Dictionary<uint, uint?> levelCostumeMap = new Dictionary<uint, uint?>
+		{
+			[2] = null,			//"Monster Profiles",
+			[3] = null,			//"Bonus Art",
+			[4] = null,			//"Main Menu",
+			[6] = null,			//"MFM 1",
+			[7] = 0x5599B7,		//"Chinatown Hub",
+			[8] = null,			//"Cookie Factory",
+			[9] = null,			//"Sewers",
+			[10] = null,		//"Sewers Autoscroll/End",
+			[11] = null,		//"Temple",
+			[12] = null,		//"Warehouse/\nDragon",
+			[13] = 0x5599B7,	//"Theme Park Hub",
+			[14] = null,		//"Haunted House",
+			[15] = null,		//"Water Park",
+			[16] = null,		//"Water Slide/End",
+			[17] = null,		//"Circus",
+			[18] = null,		//"House of Mirrors/\nGuitar Ghoul",
+			[19] = 0x5599B7,    //"Museum Hub",
+			[20] = null,		//"Dino",
+			[21] = null,		//"Medieval",
+			[22] = null,		//"Undersea",
+			[23] = null,		//"Planetarium/\nCaveman",
+			[25] = null,		//"MFM2",
+			[26] = null,		//"MFM3/\nPterodactyl",
+			[27] = null,		//"MFM2 Mystery Machine",
+		};
+
+		private static Dictionary<uint, string[]> costumeBitMap = new Dictionary<uint, string[]>
+		{
+			[7] = new string[] { "?", "?", "?", "?", "Gold Kung Fu", "Silver Kung Fu", "?", "?" },  //"Chinatown Hub",
+			[13] = new string[] { "?", "?", "?", "?", "?", "?", "Gold Bat", "Silver Bat" },			//"Theme Park Hub",
+			[19] = new string[] { "?", "?", "Gold Archer", "Silver Archer", "?", "?", "?", "?" },	//"Museum Hub",
+		};
+
+		public static Dictionary<string, bool> getLevelCostumes()
+		{
+			Dictionary<string, bool> levelCostumes = new Dictionary<string, bool>();
+
+			uint lvl = Memory.getLevel();
+			uint? lvlFlagAddr = levelCostumeMap[lvl];
+
+			if (lvlFlagAddr.HasValue)
+			{
+				byte[] buff = new byte[1];
+
+				DolphinAccessor.readFromRAM((uint)lvlFlagAddr, ref buff, 1, false);
+
+				BitArray costumeFlags = new BitArray(buff);
+				Helpers.reverseBits(costumeFlags);
+
+				for (int i = 0; i <= 7; i++)
+				{
+					if (costumeBitMap[lvl][i] != "?")
+					{
+						levelCostumes.Add(costumeBitMap[lvl][i], costumeFlags[i]);
+					}
+				}
+			}
+
+			return levelCostumes;
 
 		}
 
