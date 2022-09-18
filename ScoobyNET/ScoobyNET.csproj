@@ -86,12 +86,6 @@
     <Compile Include="Common\MemoryCommon.cs" />
     <Compile Include="DXUI\Imports.cs" />
     <Compile Include="DXUI\Overlay.cs" />
-    <Compile Include="test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
     <None Include="packages.config" />
     <None Include="UI\Data.cs" />
     <None Include="UI\Display.cs" />
@@ -110,6 +104,7 @@
     <None Include="UI\ThreadedComponent.cs" />
     <Compile Include="Unmasked\Collectibles.cs" />
     <Compile Include="Unmasked\Helpers.cs" />
+    <Compile Include="Unmasked\Input.cs" />
     <Compile Include="Unmasked\Level.cs" />
     <Compile Include="Unmasked\Memory.cs" />
     <Compile Include="Win32.cs" />
@@ -126,9 +121,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="test.resx">
-      <DependentUpon>test.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
