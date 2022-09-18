@@ -136,6 +136,7 @@ namespace ScoobyNET.DXUI
 
 		private void _window_DestroyGraphics(object sender, DestroyGraphicsEventArgs e)
 		{
+			DolphinComm.DolphinAccessor.unHook();
 			foreach (var pair in _brushes) pair.Value.Dispose();
 			foreach (var pair in _fonts) pair.Value.Dispose();
 			foreach (var pair in _images) pair.Value.Dispose();
@@ -162,10 +163,10 @@ namespace ScoobyNET.DXUI
 
 			gfx.ClearScene();
 
-			gfx.DrawText(_fonts["consolas"], 14.0f, _brushes["green"], 11, 30, infoText + Screentext);
+            gfx.DrawText(_fonts["consolas"], 14.0f, _brushes["green"], 11, 30, infoText + Screentext);
 		}
 
-		private void DrawRandomFigure(Graphics gfx, float x, float y)
+        private void DrawRandomFigure(Graphics gfx, float x, float y)
 		{
 			var action = _randomFigures[_random.Next(0, _randomFigures.Count)];
 
