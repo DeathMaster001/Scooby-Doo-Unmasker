@@ -5,9 +5,9 @@ A windowed memory value viewer made specifically for the GameCube game Scooby-Do
 ![Unmasked Windowed Tool in use 2](https://i.imgur.com/RU4Ab2Z.png)
 
 ## Planned Features (With toggleable visibility)
-- Stats (Health, Mubber)
-- Collectables (Food, Clues, Trap Pieces and Costume Tokens)
-- Input Viewer and Position Viewer
+- Stats (Health)
+- Collectables (Food, Mubber Requirements for Food, Clues, Trap Pieces and Costume Tokens)
+- Misc. (Input Viewer and Position Viewer)
 
 ## Unmasked Lua Tool
 If your interested I've made a similar tool that works with the Dolphin Lua Core emulator, check it out [here](https://github.com/DeathMaster001/Scooby-Doo-Unmasked-Lua-Tool).
