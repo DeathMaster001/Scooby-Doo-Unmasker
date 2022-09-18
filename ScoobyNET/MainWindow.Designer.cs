@@ -42,24 +42,26 @@
             this.Stats_grp = new System.Windows.Forms.GroupBox();
             this.InputDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Collectibles_grp = new System.Windows.Forms.GroupBox();
+            this.FoodMubber_chkbx = new System.Windows.Forms.CheckBox();
             this.CostumeDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.WriteFile_chkbx = new System.Windows.Forms.CheckBox();
             this.TrapDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.ClueDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.LevelDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.POSDisplay_chkbx = new System.Windows.Forms.CheckBox();
-            this.FoodMubber_chkbx = new System.Windows.Forms.CheckBox();
+            this.Misc_grp = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.Stats_grp.SuspendLayout();
             this.Collectibles_grp.SuspendLayout();
+            this.Misc_grp.SuspendLayout();
             this.SuspendLayout();
             // 
             // hook_button
             // 
-            this.hook_button.Location = new System.Drawing.Point(12, 74);
+            this.hook_button.Location = new System.Drawing.Point(16, 74);
             this.hook_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hook_button.Name = "hook_button";
-            this.hook_button.Size = new System.Drawing.Size(607, 23);
+            this.hook_button.Size = new System.Drawing.Size(603, 23);
             this.hook_button.TabIndex = 0;
             this.hook_button.Text = "Hook";
             this.hook_button.UseVisualStyleBackColor = true;
@@ -129,7 +131,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(383, 233);
+            this.button1.Location = new System.Drawing.Point(208, 233);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -152,7 +154,7 @@
             // FoodDisplay_chkbx
             // 
             this.FoodDisplay_chkbx.AutoSize = true;
-            this.FoodDisplay_chkbx.Location = new System.Drawing.Point(6, 20);
+            this.FoodDisplay_chkbx.Location = new System.Drawing.Point(7, 20);
             this.FoodDisplay_chkbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FoodDisplay_chkbx.Name = "FoodDisplay_chkbx";
             this.FoodDisplay_chkbx.Size = new System.Drawing.Size(110, 20);
@@ -179,7 +181,7 @@
             // InputDisplay_chkbx
             // 
             this.InputDisplay_chkbx.AutoSize = true;
-            this.InputDisplay_chkbx.Location = new System.Drawing.Point(7, 97);
+            this.InputDisplay_chkbx.Location = new System.Drawing.Point(7, 95);
             this.InputDisplay_chkbx.Name = "InputDisplay_chkbx";
             this.InputDisplay_chkbx.Size = new System.Drawing.Size(106, 20);
             this.InputDisplay_chkbx.TabIndex = 14;
@@ -188,24 +190,33 @@
             // 
             // Collectibles_grp
             // 
+            this.Collectibles_grp.Controls.Add(this.Misc_grp);
             this.Collectibles_grp.Controls.Add(this.FoodMubber_chkbx);
             this.Collectibles_grp.Controls.Add(this.CostumeDisplay_chkbx);
-            this.Collectibles_grp.Controls.Add(this.WriteFile_chkbx);
             this.Collectibles_grp.Controls.Add(this.TrapDisplay_chkbx);
-            this.Collectibles_grp.Controls.Add(this.button1);
             this.Collectibles_grp.Controls.Add(this.ClueDisplay_chkbx);
             this.Collectibles_grp.Controls.Add(this.FoodDisplay_chkbx);
             this.Collectibles_grp.Location = new System.Drawing.Point(138, 0);
             this.Collectibles_grp.Name = "Collectibles_grp";
-            this.Collectibles_grp.Size = new System.Drawing.Size(465, 263);
+            this.Collectibles_grp.Size = new System.Drawing.Size(465, 262);
             this.Collectibles_grp.TabIndex = 13;
             this.Collectibles_grp.TabStop = false;
             this.Collectibles_grp.Text = "Collectibles";
             // 
+            // FoodMubber_chkbx
+            // 
+            this.FoodMubber_chkbx.AutoSize = true;
+            this.FoodMubber_chkbx.Location = new System.Drawing.Point(17, 45);
+            this.FoodMubber_chkbx.Name = "FoodMubber_chkbx";
+            this.FoodMubber_chkbx.Size = new System.Drawing.Size(151, 20);
+            this.FoodMubber_chkbx.TabIndex = 14;
+            this.FoodMubber_chkbx.Text = "Food Mubber Totals";
+            this.FoodMubber_chkbx.UseVisualStyleBackColor = true;
+            // 
             // CostumeDisplay_chkbx
             // 
             this.CostumeDisplay_chkbx.AutoSize = true;
-            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(6, 98);
+            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(7, 120);
             this.CostumeDisplay_chkbx.Name = "CostumeDisplay_chkbx";
             this.CostumeDisplay_chkbx.Size = new System.Drawing.Size(161, 20);
             this.CostumeDisplay_chkbx.TabIndex = 13;
@@ -215,7 +226,7 @@
             // WriteFile_chkbx
             // 
             this.WriteFile_chkbx.AutoSize = true;
-            this.WriteFile_chkbx.Location = new System.Drawing.Point(341, 20);
+            this.WriteFile_chkbx.Location = new System.Drawing.Point(6, 20);
             this.WriteFile_chkbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WriteFile_chkbx.Name = "WriteFile_chkbx";
             this.WriteFile_chkbx.Size = new System.Drawing.Size(117, 20);
@@ -226,7 +237,7 @@
             // TrapDisplay_chkbx
             // 
             this.TrapDisplay_chkbx.AutoSize = true;
-            this.TrapDisplay_chkbx.Location = new System.Drawing.Point(6, 71);
+            this.TrapDisplay_chkbx.Location = new System.Drawing.Point(7, 95);
             this.TrapDisplay_chkbx.Name = "TrapDisplay_chkbx";
             this.TrapDisplay_chkbx.Size = new System.Drawing.Size(107, 20);
             this.TrapDisplay_chkbx.TabIndex = 12;
@@ -236,7 +247,7 @@
             // ClueDisplay_chkbx
             // 
             this.ClueDisplay_chkbx.AutoSize = true;
-            this.ClueDisplay_chkbx.Location = new System.Drawing.Point(6, 45);
+            this.ClueDisplay_chkbx.Location = new System.Drawing.Point(7, 70);
             this.ClueDisplay_chkbx.Name = "ClueDisplay_chkbx";
             this.ClueDisplay_chkbx.Size = new System.Drawing.Size(105, 20);
             this.ClueDisplay_chkbx.TabIndex = 11;
@@ -257,7 +268,7 @@
             // POSDisplay_chkbx
             // 
             this.POSDisplay_chkbx.AutoSize = true;
-            this.POSDisplay_chkbx.Location = new System.Drawing.Point(7, 71);
+            this.POSDisplay_chkbx.Location = new System.Drawing.Point(7, 70);
             this.POSDisplay_chkbx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.POSDisplay_chkbx.Name = "POSDisplay_chkbx";
             this.POSDisplay_chkbx.Size = new System.Drawing.Size(126, 20);
@@ -265,15 +276,16 @@
             this.POSDisplay_chkbx.Text = "Position Display";
             this.POSDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
-            // FoodMubber_chkbx
+            // Misc_grp
             // 
-            this.FoodMubber_chkbx.AutoSize = true;
-            this.FoodMubber_chkbx.Location = new System.Drawing.Point(123, 20);
-            this.FoodMubber_chkbx.Name = "FoodMubber_chkbx";
-            this.FoodMubber_chkbx.Size = new System.Drawing.Size(151, 20);
-            this.FoodMubber_chkbx.TabIndex = 14;
-            this.FoodMubber_chkbx.Text = "Food Mubber Totals";
-            this.FoodMubber_chkbx.UseVisualStyleBackColor = true;
+            this.Misc_grp.Controls.Add(this.WriteFile_chkbx);
+            this.Misc_grp.Controls.Add(this.button1);
+            this.Misc_grp.Location = new System.Drawing.Point(175, 0);
+            this.Misc_grp.Name = "Misc_grp";
+            this.Misc_grp.Size = new System.Drawing.Size(290, 262);
+            this.Misc_grp.TabIndex = 15;
+            this.Misc_grp.TabStop = false;
+            this.Misc_grp.Text = "Misc.";
             // 
             // MainWindow
             // 
@@ -295,6 +307,8 @@
             this.Stats_grp.PerformLayout();
             this.Collectibles_grp.ResumeLayout(false);
             this.Collectibles_grp.PerformLayout();
+            this.Misc_grp.ResumeLayout(false);
+            this.Misc_grp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,6 +337,7 @@
         private System.Windows.Forms.CheckBox CostumeDisplay_chkbx;
         private System.Windows.Forms.CheckBox InputDisplay_chkbx;
         private System.Windows.Forms.CheckBox FoodMubber_chkbx;
+        private System.Windows.Forms.GroupBox Misc_grp;
     }
 }
 

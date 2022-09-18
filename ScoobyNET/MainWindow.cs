@@ -352,5 +352,10 @@ namespace ScoobyNET
             overlay.Screentext = overlay.Screentext.Remove(0, 1);
 
         }
+
+        private void FoodDisplay_chkbx_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
