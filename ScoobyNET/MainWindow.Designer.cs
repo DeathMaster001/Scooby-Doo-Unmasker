@@ -40,15 +40,18 @@
             this.Health_chkbx = new System.Windows.Forms.CheckBox();
             this.FoodDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Stats_grp = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.InputDisplay_chkbx = new System.Windows.Forms.CheckBox();
+            this.Collectibles_grp = new System.Windows.Forms.GroupBox();
+            this.CostumeDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.WriteFile_chkbx = new System.Windows.Forms.CheckBox();
             this.TrapDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.ClueDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.LevelDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.POSDisplay_chkbx = new System.Windows.Forms.CheckBox();
+            this.FoodMubber_chkbx = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.Stats_grp.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.Collectibles_grp.SuspendLayout();
             this.SuspendLayout();
             // 
             // hook_button
@@ -89,7 +92,7 @@
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -110,7 +113,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -159,7 +162,8 @@
             // 
             // Stats_grp
             // 
-            this.Stats_grp.Controls.Add(this.groupBox1);
+            this.Stats_grp.Controls.Add(this.InputDisplay_chkbx);
+            this.Stats_grp.Controls.Add(this.Collectibles_grp);
             this.Stats_grp.Controls.Add(this.LevelDisplay_chkbx);
             this.Stats_grp.Controls.Add(this.POSDisplay_chkbx);
             this.Stats_grp.Controls.Add(this.Health_chkbx);
@@ -172,19 +176,41 @@
             this.Stats_grp.TabStop = false;
             this.Stats_grp.Text = "Stats";
             // 
-            // groupBox1
+            // InputDisplay_chkbx
             // 
-            this.groupBox1.Controls.Add(this.WriteFile_chkbx);
-            this.groupBox1.Controls.Add(this.TrapDisplay_chkbx);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.ClueDisplay_chkbx);
-            this.groupBox1.Controls.Add(this.FoodDisplay_chkbx);
-            this.groupBox1.Location = new System.Drawing.Point(138, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(465, 263);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Collectibles";
+            this.InputDisplay_chkbx.AutoSize = true;
+            this.InputDisplay_chkbx.Location = new System.Drawing.Point(7, 97);
+            this.InputDisplay_chkbx.Name = "InputDisplay_chkbx";
+            this.InputDisplay_chkbx.Size = new System.Drawing.Size(106, 20);
+            this.InputDisplay_chkbx.TabIndex = 14;
+            this.InputDisplay_chkbx.Text = "Input Display";
+            this.InputDisplay_chkbx.UseVisualStyleBackColor = true;
+            // 
+            // Collectibles_grp
+            // 
+            this.Collectibles_grp.Controls.Add(this.FoodMubber_chkbx);
+            this.Collectibles_grp.Controls.Add(this.CostumeDisplay_chkbx);
+            this.Collectibles_grp.Controls.Add(this.WriteFile_chkbx);
+            this.Collectibles_grp.Controls.Add(this.TrapDisplay_chkbx);
+            this.Collectibles_grp.Controls.Add(this.button1);
+            this.Collectibles_grp.Controls.Add(this.ClueDisplay_chkbx);
+            this.Collectibles_grp.Controls.Add(this.FoodDisplay_chkbx);
+            this.Collectibles_grp.Location = new System.Drawing.Point(138, 0);
+            this.Collectibles_grp.Name = "Collectibles_grp";
+            this.Collectibles_grp.Size = new System.Drawing.Size(465, 263);
+            this.Collectibles_grp.TabIndex = 13;
+            this.Collectibles_grp.TabStop = false;
+            this.Collectibles_grp.Text = "Collectibles";
+            // 
+            // CostumeDisplay_chkbx
+            // 
+            this.CostumeDisplay_chkbx.AutoSize = true;
+            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(6, 98);
+            this.CostumeDisplay_chkbx.Name = "CostumeDisplay_chkbx";
+            this.CostumeDisplay_chkbx.Size = new System.Drawing.Size(161, 20);
+            this.CostumeDisplay_chkbx.TabIndex = 13;
+            this.CostumeDisplay_chkbx.Text = "Costume Coin Display";
+            this.CostumeDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // WriteFile_chkbx
             // 
@@ -239,6 +265,16 @@
             this.POSDisplay_chkbx.Text = "Position Display";
             this.POSDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
+            // FoodMubber_chkbx
+            // 
+            this.FoodMubber_chkbx.AutoSize = true;
+            this.FoodMubber_chkbx.Location = new System.Drawing.Point(123, 20);
+            this.FoodMubber_chkbx.Name = "FoodMubber_chkbx";
+            this.FoodMubber_chkbx.Size = new System.Drawing.Size(151, 20);
+            this.FoodMubber_chkbx.TabIndex = 14;
+            this.FoodMubber_chkbx.Text = "Food Mubber Totals";
+            this.FoodMubber_chkbx.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -257,8 +293,8 @@
             this.menuStrip1.PerformLayout();
             this.Stats_grp.ResumeLayout(false);
             this.Stats_grp.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Collectibles_grp.ResumeLayout(false);
+            this.Collectibles_grp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,7 +319,10 @@
         private System.Windows.Forms.CheckBox POSDisplay_chkbx;
         private System.Windows.Forms.CheckBox TrapDisplay_chkbx;
         private System.Windows.Forms.CheckBox ClueDisplay_chkbx;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox Collectibles_grp;
+        private System.Windows.Forms.CheckBox CostumeDisplay_chkbx;
+        private System.Windows.Forms.CheckBox InputDisplay_chkbx;
+        private System.Windows.Forms.CheckBox FoodMubber_chkbx;
     }
 }
 

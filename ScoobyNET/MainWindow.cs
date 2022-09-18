@@ -36,11 +36,11 @@ namespace ScoobyNET
         {
             if (DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.hooked)
             {
-                onUnHookAttempt();
+                OnUnHookAttempt();
             }
             else
             {
-                onHookAttempt();
+                OnHookAttempt();
             }
         }
 
@@ -68,9 +68,9 @@ namespace ScoobyNET
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("A memory value viewer made for Scooby-Doo Unmasked! made for use with the emulator Dolphin." +
+            MessageBox.Show("A memory value viewer made for Scooby-Doo Unmasked! made for use with the emulator Dolphin. " +
                 "Shows various in game values normally not seen during gameplay." +
-                "\n\nThis program is licensed under the MIT License." +
+                "\n\nThis program is licensed under the MIT License. " +
                 "You should have recieved a copy of the MIT license along with this program." +
                 "\n\nCredits:\nDeathMaster001 for coding and window design.\nHDBSD for the majority of the coding." +
                 "\nClimbingCoder for finding the majority of the memory values." +
@@ -100,7 +100,7 @@ namespace ScoobyNET
             }
         }
 
-        private void onHookAttempt()
+        private void OnHookAttempt()
         {
             DolphinAccessor.hook();
             updateDolphinHookingStatus();
@@ -113,28 +113,26 @@ namespace ScoobyNET
             if(Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DE78" && DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.hooked)
             {
                 MessageBox.Show("Unsupported game has been detected. Only Scooby-Doo Unmasked! (USA) is supported.");
-                onUnHookAttempt();
+                OnUnHookAttempt();
                 return;
             }
 
             // enable controls
-
-            onUnhookShow();
+            OnUnhookShow();
 
             // start timers
-
             watchTimer.Start();
         }
 
         private void firstHookAttempt()
         {
 
-            onHookAttempt();
+            OnHookAttempt();
         }
 
-        private void onUnHookAttempt()
+        private void OnUnHookAttempt()
         {
-            onUnhookHide();
+            OnUnhookHide();
             watchTimer.Stop();
             DolphinAccessor.unHook();
             updateDolphinHookingStatus();
@@ -145,11 +143,19 @@ namespace ScoobyNET
             }
         }
 
-        private void onUnhookHide()
+        private void OnUnhookHide()
         {
             Stats_grp.Enabled = false;
+            Health_chkbx.Checked = false;
+            LevelDisplay_chkbx.Checked = false;
+            POSDisplay_chkbx.Checked = false;
+            FoodDisplay_chkbx.Checked = false;
+            ClueDisplay_chkbx.Checked = false;
+            TrapDisplay_chkbx.Checked = false;
+            CostumeDisplay_chkbx.Checked = false;
+            InputDisplay_chkbx.Checked = false;
         }
-        private void onUnhookShow()
+        private void OnUnhookShow()
         {
             Stats_grp.Enabled = true;
         }
@@ -165,7 +171,7 @@ namespace ScoobyNET
             // abort if not hooked
 
             if (DolphinAccessor.getStatus() != DolphinAccessor.DolphinStatus.hooked)
-                onUnHookAttempt();
+                OnUnHookAttempt();
 
             if (overlay == null)
                 return;
@@ -174,7 +180,7 @@ namespace ScoobyNET
 
             if (LevelDisplay_chkbx.Checked)
             {
-                overlay.Screentext += "\nLevel Name: " + Unmasked.Level.getLevelName();
+                overlay.Screentext += "\nLevel: " + Unmasked.Level.getLevelName();
             }
 
             //Shows Health on screen when health checkbox is checked
@@ -190,41 +196,156 @@ namespace ScoobyNET
                 overlay.Screentext += $"\nPosition:\n\tX: {posCoords[0].ToString("0.000")}\n\tY: {posCoords[1].ToString("0.000")}\n\tZ: {posCoords[2].ToString("0.000")}";
             }
 
+            //Shows Player input on Screen.
+            if (InputDisplay_chkbx.Checked)
+            {
+                Dictionary<string, int> inputDisplay = Unmasked.Input.processInputs();
+                
+                foreach (var input in inputDisplay)
+                {
+                    overlay.Screentext += "\n" + input.Key + " " + (input.Value);
+                }
+            }
+
             //Shows Food on screen when food checkbox is checked
             if (FoodDisplay_chkbx.Checked)
             {
-                overlay.Screentext += "\nFood: ";
+                
                 Dictionary<string, bool> levelFoods = Unmasked.Collectibles.getLevelFoods();
 
-                //foreach loop writes each food to screen
-                foreach(string food in levelFoods.Keys)
+                if (levelFoods.Count == 0)
                 {
-                    overlay.Screentext += "\n" + food + " " + (levelFoods[food] ? "[*]" : "[]");
+                    overlay.Screentext += "\n\nNo Foods";
                 }
+                else
+                {
+                    string foodmsg = "\n\nFood(s): ";
+                    bool foodComplete = true;
+
+                    //foreach loop writes each food to screen
+                    foreach (string food in levelFoods.Keys)
+                    {
+                        foodmsg += "\n" + food + " " + (levelFoods[food] ? "[*]" : "[]");
+                        if(!levelFoods[food])
+                        {
+                            foodComplete = false;
+                        }
+                    }
+                    if (foodComplete)
+                    {
+                        overlay.Screentext += "\n\nAll Foods Collected"; 
+                    }
+                    else
+                    {
+                        overlay.Screentext += foodmsg;
+                    }
+                }
+                
             }
 
             //Shows Clues on screen when Clue checkbox is checked
             if (ClueDisplay_chkbx.Checked)
             {
-                overlay.Screentext += "\nClues: ";
                 Dictionary<string, bool> levelClues = Unmasked.Collectibles.getLevelClues();
 
-                //foreach loop writes each food to screen
-                foreach (string clue in levelClues.Keys)
+                if (levelClues.Count == 0)
                 {
-                    overlay.Screentext += "\n" + clue + " " + (levelClues[clue] ? "[*]" : "[]");
+                    overlay.Screentext += "\n\nNo Clues";
+                }
+                else
+                {
+                    string cluemsg = "\n\nClue(s): ";
+                    bool clueComplete = true;
+
+
+                    //foreach loop writes each clue to screen
+                    foreach (string clue in levelClues.Keys)
+                    {
+                        cluemsg += "\n" + clue + " " + (levelClues[clue] ? "[*]" : "[]");
+                        if (!levelClues[clue])
+                        {
+                            clueComplete = false;
+                        }
+                    }
+                    if (clueComplete)
+                    {
+                        overlay.Screentext += "\n\nAll Clues Collected";
+                    }
+                    else
+                    {
+                        overlay.Screentext += cluemsg;
+                    }
                 }
             }
 
+            //Shows Traps on screen when Trap checkbox is checked
             if (TrapDisplay_chkbx.Checked)
             {
-                overlay.Screentext += "\nTraps: ";
+
                 Dictionary<string, bool> levelTraps = Unmasked.Collectibles.getLevelTraps();
 
-                //foreach loop writes each food to screen
-                foreach (string trap in levelTraps.Keys)
+                if (levelTraps.Count == 0)
                 {
-                    overlay.Screentext += "\n" + trap + " " + (levelTraps[trap] ? "[*]" : "[]");
+                    overlay.Screentext += "\n\nNo Traps";
+                }
+                else
+                {
+                    string trapmsg = "\n\nTrap: ";
+                    bool trapComplete = true;
+
+
+                    //foreach loop writes each trap to screen
+                    foreach (string trap in levelTraps.Keys)
+                    {
+                        trapmsg += "\n" + trap + " " + (levelTraps[trap] ? "[*]" : "[]");
+                        if (!levelTraps[trap])
+                        {
+                            trapComplete = false;
+                        }
+                    }
+                    if (trapComplete)
+                    {
+                        overlay.Screentext += "\n\nTrap Collected";
+                    }
+                    else
+                    {
+                        overlay.Screentext += trapmsg;
+                    }
+                }
+            }
+
+            //Shows Costume on screen when Costume checkbox is checked
+            if (CostumeDisplay_chkbx.Checked)
+            {
+                Dictionary<string, bool> levelCostumes = Unmasked.Collectibles.getLevelCostumes();
+
+                if(levelCostumes.Count == 0)
+                {
+                    overlay.Screentext += "\n\nNo Costumes";
+                }
+                else
+                {
+                    string costumemsg = "\n\nCostume(s): ";
+                    bool costumeComplete = true;
+
+
+                    //foreach loop writes each trap to screen
+                    foreach (string costume in levelCostumes.Keys)
+                    {
+                        costumemsg += "\n" + costume + " " + (levelCostumes[costume] ? "[*]" : "[]");
+                        if (!levelCostumes[costume])
+                        {
+                            costumeComplete = false;
+                        }
+                    }
+                    if (costumeComplete)
+                    {
+                        overlay.Screentext += "\n\nCostume Tokens Collected";
+                    }
+                    else
+                    {
+                        overlay.Screentext += costumemsg;
+                    }
                 }
             }
 
