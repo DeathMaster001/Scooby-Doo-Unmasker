@@ -21,12 +21,18 @@ namespace ScoobyNET.Unmasked
             return BitConverter.ToUInt32(buff, 0);
         }
 
-        /*public static uint getMubber()
+        public static uint getMubber()
         {
             byte[] buff = new byte[4];
             DolphinAccessor.readFromRAM(0x559908, ref buff, 4, true);
+
+            if (!DolphinAccessor.readFromRAM(0x559908, ref buff, 4, true))
+            {
+                DolphinAccessor.unHook();
+                return BitConverter.ToUInt32(buff, 0);
+            }
             return BitConverter.ToUInt32(buff, 0);
-        }*/
+        }
 
         public static uint getLevel()
         {

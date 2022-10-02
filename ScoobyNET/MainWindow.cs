@@ -168,14 +168,17 @@ namespace ScoobyNET
         private void OnUnhookHide()
         {
             Stats_grp.Enabled = false;
-            Health_chkbx.Checked = false;
+            HealthDisplay_chkbx.Checked = false;
+            MubberDisplay_chkbx.Checked = false;
             LevelDisplay_chkbx.Checked = false;
             POSDisplay_chkbx.Checked = false;
+            InputDisplay_chkbx.Checked = false;
             FoodDisplay_chkbx.Checked = false;
+            FoodMubber_chkbx.Checked = false;
             ClueDisplay_chkbx.Checked = false;
             TrapDisplay_chkbx.Checked = false;
             CostumeDisplay_chkbx.Checked = false;
-            InputDisplay_chkbx.Checked = false;
+            WriteFile_chkbx.Checked = false;
         }
         private void OnUnhookShow()
         {
@@ -200,15 +203,22 @@ namespace ScoobyNET
 
             overlay.Screentext = "\n";
 
+            //Shows Health on screen when the "Scooby's Health" checkbox is checked
+            if (HealthDisplay_chkbx.Checked)
+            {
+                overlay.Screentext += "\nHealth: " + Unmasked.Memory.getHealth().ToString();
+            }
+
+            //Shows Mubber on screen when the "Scooby's Mubber" checkbox is checked
+            if (MubberDisplay_chkbx.Checked)
+            {
+                overlay.Screentext += "\nMubber: " + Unmasked.Memory.getMubber().ToString();
+            }
+
+            //Shows Current Level on screen when the "Level Display" checkbox is checked.
             if (LevelDisplay_chkbx.Checked)
             {
                 overlay.Screentext += "\nLevel: " + Unmasked.Level.getLevelName();
-            }
-
-            //Shows Health on screen when health checkbox is checked
-            if (Health_chkbx.Checked)
-            {
-                 overlay.Screentext += "\nHealth: " + Unmasked.Memory.getHealth().ToString();
             }
 
             //Shows Scooby's X,Y,Z Position on screen when the position checkbox is checked
