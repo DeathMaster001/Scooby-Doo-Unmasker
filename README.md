@@ -11,7 +11,7 @@ A windowed memory value viewer made specifically for the GameCube game Scooby-Do
 - Input and Position Viewer
 
 ## Unmasked Lua Scripts
-If your interested, I have a similar project of Lua Scripts for Unmasked that work with the Dolphin Lua Core emulator, check it out [here](https://github.com/DeathMaster001/Scooby-Doo-Unmasked-Lua-Scripts).
+If your interested, I have a similar project of Lua Scripts for Unmasked that works with the Dolphin Lua Core emulator, check it out [here](https://github.com/DeathMaster001/Scooby-Doo-Unmasked-Lua-Scripts).
 
 ## Original Projects
 
