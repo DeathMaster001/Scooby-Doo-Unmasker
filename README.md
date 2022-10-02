@@ -1,4 +1,4 @@
-# Scooby-Doo Unmasked Windowed Tool
+# Scooby-Doo Unmasker
 A windowed memory value viewer made specifically for the GameCube game Scooby-Doo! Unmasked. Made for use with the Dolphin emulator. Intended to be used by speedrunners, glitch hunters and TAS creators.
 
 ![Unmasked Windowed Tool in use 1](https://i.imgur.com/H8zu5Mp.png)
@@ -28,3 +28,4 @@ This program is licensed under the MIT license which grants you the permission t
 - HDBSD for the majority of the coding.
 - ClimbingCoder for finding the majority of the memory values.
 - Schnert for finding the Position Data/Pointer for Scooby.
+- Ghabulous Ghoti for the name of the program.
