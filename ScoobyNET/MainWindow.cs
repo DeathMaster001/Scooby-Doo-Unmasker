@@ -82,7 +82,7 @@ namespace ScoobyNET
                 "\nHDBSD for the majority of the coding." +
                 "\nClimbingCoder for finding the majority of the memory values." +
                 "\nSchnert for finding the Position Data/Pointer for Scooby." +
-                "\nGhabulous Ghoti for name of the program.", "About Scooby Doo Unmasker", MessageBoxButtons.OK);
+                "\nGhabulous Ghoti for the name of the program.", "About Scooby Doo Unmasker", MessageBoxButtons.OK);
         }
 
         private void updateDolphinHookingStatus()
