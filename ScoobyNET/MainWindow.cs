@@ -46,6 +46,7 @@ namespace ScoobyNET
 
         DXUI.Overlay overlay;
 
+#if DEBUG 
         //Test button (delete later)
         private void button1_Click(object sender, EventArgs e)
         {
@@ -60,6 +61,11 @@ namespace ScoobyNET
                 overlay = null;
             }
         }
+#else
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+#endif
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -68,13 +74,15 @@ namespace ScoobyNET
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("A memory value viewer made for Scooby-Doo Unmasked! made for use with the emulator Dolphin. " +
+            MessageBox.Show("A memory value viewer made for Scooby-Doo Unmasked! Made for use with the emulator Dolphin. " +
                 "Shows various in game values normally not seen during gameplay." +
                 "\n\nThis program is licensed under the MIT License. " +
                 "You should have recieved a copy of the MIT license along with this program." +
-                "\n\nCredits:\nDeathMaster001 for coding and window design.\nHDBSD for the majority of the coding." +
+                "\n\nCredits:\nDeathMaster001 for coding and window design." +
+                "\nHDBSD for the majority of the coding." +
                 "\nClimbingCoder for finding the majority of the memory values." +
-                "\nSchnert for finding the Position Data/Pointer for Scooby.", "About Unmasked Tool", MessageBoxButtons.OK);
+                "\nSchnert for finding the Position Data/Pointer for Scooby." +
+                "\nGhabulous Ghoti for name of the program.", "About Scooby Doo Unmasker", MessageBoxButtons.OK);
         }
 
         private void updateDolphinHookingStatus()
@@ -102,6 +110,21 @@ namespace ScoobyNET
 
         private void OnHookAttempt()
         {
+#if DEBUG
+            button1.Visible = true;
+#else
+            button1.Visible = false;
+            if (overlay == null)
+            {
+                overlay = new DXUI.Overlay();
+                overlay.Run();
+            }
+            else
+            {
+                overlay.Dispose();
+                overlay = null;
+            }
+#endif
             DolphinAccessor.hook();
             updateDolphinHookingStatus();
             
@@ -126,7 +149,6 @@ namespace ScoobyNET
 
         private void firstHookAttempt()
         {
-
             OnHookAttempt();
         }
 
@@ -200,7 +222,7 @@ namespace ScoobyNET
             if (InputDisplay_chkbx.Checked)
             {
                 Dictionary<string, int> inputDisplay = Unmasked.Input.processInputs();
-                
+                overlay.Screentext += "\nInput:";
                 foreach (var input in inputDisplay)
                 {
                     overlay.Screentext += "\n" + input.Key + " " + (input.Value);
@@ -210,8 +232,9 @@ namespace ScoobyNET
             //Shows Food on screen when food checkbox is checked
             if (FoodDisplay_chkbx.Checked)
             {
-                
+                uint lvl = Unmasked.Memory.getLevel();
                 Dictionary<string, bool> levelFoods = Unmasked.Collectibles.getLevelFoods();
+                Dictionary<string, bool> levelmubberFoods = Unmasked.Collectibles.getLevelFoodsMubber();
 
                 if (levelFoods.Count == 0)
                 {
@@ -226,9 +249,24 @@ namespace ScoobyNET
                     foreach (string food in levelFoods.Keys)
                     {
                         foodmsg += "\n" + food + " " + (levelFoods[food] ? "[*]" : "[]");
-                        if(!levelFoods[food])
+                        if (!levelFoods[food])
                         {
                             foodComplete = false;
+                        }
+                        //if FoodMubber checkbox is checked, the required mubber for the respective mubber machine is shown.
+                        if (FoodMubber_chkbx.Checked)
+                        {
+                            foreach (string mubberfood in levelmubberFoods.Keys)
+                            {
+                                if (foodComplete == false)
+                                {
+                                    //write code that does this if statement more effectively and efficiently
+                                    if (lvl == 6 && food == "Chocolate Bar" || lvl == 8 && food == "Apple" || lvl == 9 && food == "Pepperoni" || lvl == 11 && food == "Carrot" || lvl == 14 && food == "Broccoli" || lvl == 17 && food == "Eggplant" || lvl == 20 && food == "Marshmallows" || lvl == 22 && food == "Cotton Candy")
+                                    {
+                                        foodmsg += " "+ mubberfood + " Mubber";
+                                    }
+                                }
+                            }
                         }
                     }
                     if (foodComplete)

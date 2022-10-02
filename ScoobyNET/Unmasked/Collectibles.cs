@@ -55,18 +55,6 @@ namespace ScoobyNET.Unmasked
 			[22] = new string[] { "?", "?", "Cotton Candy", "Cabbage", "Shrimp", "Broccoli", "Hot Pepper", "Eggplant" },	//"Undersea",
 		};
 
-		private static Dictionary<uint, string[]> mubberBitMap = new Dictionary<uint, string[]>
-		{
-			[6] = new string[] { "?", "?", "?", "?", "?", "?", "Chocolate Bar75", "?" },									//"MFM 1",
-			[8] = new string[] { "?", "?", "?", "?", "?", "Apple65", "?", "?" },											//"Cookie Factory",
-			[9] = new string[] { "?", "?", "?", "?", "?", "?", "?", "Pepperoni120" },										//"Sewers",
-			[11] = new string[] { "?", "?", "?", "?", "?", "?", "?", "Carrot275" },											//"Temple",
-			[14] = new string[] { "?", "?", "?", "?", "Broccoli185", "?", "?", "?" },										//"Haunted House",
-			[17] = new string[] { "?", "?", "?", "?", "?", "?", "?", "Eggplant230" },										//"Circus",
-			[20] = new string[] { "?", "?", "?", "?", "?", "Marshmallows190", "?", "?" },									//"Dino",
-			[22] = new string[] { "?", "?", "Cotton Candy230", "?", "?", "?", "?", "?" },    //"Undersea",
-		};
-
 		public static Dictionary<string, bool>getLevelFoods()
         {
 			Dictionary<string, bool> levelFoods = new Dictionary<string, bool>();
@@ -92,6 +80,74 @@ namespace ScoobyNET.Unmasked
 				}
 			}
 			return levelFoods;
+		}
+
+		private static Dictionary<uint, uint?> levelmubberFoodMap = new Dictionary<uint, uint?>
+		{
+			[2] = null,         //"Monster Profiles",
+			[3] = null,         //"Bonus Art",
+			[4] = null,         //"Main Menu",
+			[6] = 0x559986,     //"MFM 1",
+			[7] = null,         //"Chinatown Hub",
+			[8] = 0x559988,     //"Cookie Factory",
+			[9] = 0x559989,     //"Sewers",
+			[10] = null,        //"Sewers Autoscroll/End",
+			[11] = 0x55998B,    //"Temple",
+			[12] = null,        //"Warehouse/\nDragon",
+			[13] = null,        //"Theme Park Hub",
+			[14] = 0x55998E,    //"Haunted House",
+			[15] = null,        //"Water Park",
+			[16] = null,        //"Water Slide/End",
+			[17] = 0x559991,    //"Circus",
+			[18] = null,        //"House of Mirrors/\nGuitar Ghoul",
+			[19] = null,        //"Museum Hub",
+			[20] = 0x559994,    //"Dino",
+			[21] = null,    //"Medieval",
+			[22] = 0x559996,    //"Undersea",
+		};
+
+		private static Dictionary<uint, string[]> mubberBitMap = new Dictionary<uint, string[]>
+		{
+			[6] = new string[] { "?", "?", "?", "?", "?", "?", "75", "?" },     //"MFM 1, Chocolate Bar is 75 Mubber"
+			[8] = new string[] { "?", "?", "?", "?", "?", "65", "?", "?" },     //"Cookie Factory, Apple is 65 Mubber"
+			[9] = new string[] { "?", "?", "?", "?", "?", "?", "?", "120" },    //"Sewers", Pepperoni is 120 Mubber"
+			[11] = new string[] { "?", "?", "?", "?", "?", "?", "?", "275" },   //"Temple", Carrot is 275 Mubber"
+			[14] = new string[] { "?", "?", "?", "?", "185", "?", "?", "?" },   //"Haunted House", Broccoli is 185 Mubber"
+			[17] = new string[] { "?", "?", "?", "?", "?", "?", "?", "230" },   //"Circus", Eggplant is 230 Mubber"
+			[20] = new string[] { "?", "?", "?", "?", "?", "190", "?", "?" },   //"Dino", Marshmallows is 190 Mubber"
+			[22] = new string[] { "?", "?", "230", "?", "?", "?", "?", "?" },   //"Undersea", Cotton Candy is 230 Mubber"
+		};
+
+		public static Dictionary<string, bool> getLevelFoodsMubber()
+		{
+			Dictionary<string, bool> levelmubberFoods = new Dictionary<string, bool>();
+
+			uint lvl = Memory.getLevel();
+			uint? lvlFlagAddr = levelmubberFoodMap[lvl];
+
+			if (lvlFlagAddr == null)
+			{
+				return levelmubberFoods;
+			}
+
+			if (lvlFlagAddr.HasValue)
+			{
+				byte[] buff = new byte[1];
+
+				DolphinAccessor.readFromRAM((uint)lvlFlagAddr, ref buff, 1, false);
+
+				BitArray foodmubberFlags = new BitArray(buff);
+				Helpers.reverseBits(foodmubberFlags);
+
+				for (int i = 0; i <= 7; i++)
+				{
+					if (mubberBitMap[lvl][i] != "?")
+					{
+							levelmubberFoods.Add(mubberBitMap[lvl][i], foodmubberFlags[i]);
+					}
+				}
+			}
+			return levelmubberFoods;
 		}
 
 		private static Dictionary<uint, List<uint>> levelClueMap = new Dictionary<uint, List<uint>>
