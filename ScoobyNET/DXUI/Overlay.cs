@@ -56,7 +56,12 @@ namespace ScoobyNET.DXUI
 					gameWindow = handle;
 					break;
 				}
-			}
+				else if (title.Contains("G5DE78") || title.Contains("G5DP78"))
+                {
+                    gameWindow = handle;
+                    break;
+                }
+            }
 
 
 			if (gameWindow == IntPtr.Zero)
@@ -158,7 +163,7 @@ namespace ScoobyNET.DXUI
 				.Append("\n")
 				.ToString();
 #else
-			string infoText = "";
+            string infoText = "";
 #endif
 
 			gfx.ClearScene();
@@ -213,7 +218,7 @@ namespace ScoobyNET.DXUI
 		{
 			if (!disposedValue)
 			{
-				_window.Dispose();
+				_window?.Dispose();
 
 				disposedValue = true;
 			}

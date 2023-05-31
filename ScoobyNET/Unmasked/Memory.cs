@@ -8,12 +8,24 @@ namespace ScoobyNET.Unmasked
 {
     public class Memory
     {
+        /* gametype
+        0 - Unmasked! NTSC (G5DE78)
+        1 - Unmasked! PAL (G5DP78)*/
+        public static int gametype = 0;
+
         public static uint getHealth()
         {
-            byte[] buff = new byte[4];
-            DolphinAccessor.readFromRAM(0x559900, ref buff, 4, true);
+            uint addr = 0x559900;
 
-            if (!DolphinAccessor.readFromRAM(0x559900, ref buff, 4, true))
+            if(gametype == 1)
+            {
+                addr = addr+0x1E500;
+            }
+
+            byte[] buff = new byte[4];
+            DolphinAccessor.readFromRAM(addr, ref buff, 4, true);
+
+            if (!DolphinAccessor.readFromRAM(addr, ref buff, 4, true))
             {
                 DolphinAccessor.unHook();
                 return BitConverter.ToUInt32(buff, 0);
@@ -23,10 +35,17 @@ namespace ScoobyNET.Unmasked
 
         public static uint getMubber()
         {
-            byte[] buff = new byte[4];
-            DolphinAccessor.readFromRAM(0x559908, ref buff, 4, true);
+            uint addr = 0x559908;
 
-            if (!DolphinAccessor.readFromRAM(0x559908, ref buff, 4, true))
+            if (gametype == 1)
+            {
+                addr = addr + 0x1E500;
+            }
+
+            byte[] buff = new byte[4];
+            DolphinAccessor.readFromRAM(addr, ref buff, 4, true);
+
+            if (!DolphinAccessor.readFromRAM(addr, ref buff, 4, true))
             {
                 DolphinAccessor.unHook();
                 return BitConverter.ToUInt32(buff, 0);
@@ -36,10 +55,17 @@ namespace ScoobyNET.Unmasked
 
         public static uint getLevel()
         {
-            byte[] buff = new byte[1];
-            DolphinAccessor.readFromRAM(0x5599F1, ref buff, 1, true);
+            uint addr = 0x5599F1;
 
-            if (!DolphinAccessor.readFromRAM(0x5599F1, ref buff, 1, true))
+            if (gametype == 1)
+            {
+                addr = addr + 0x1E500;
+            }
+
+            byte[] buff = new byte[1];
+            DolphinAccessor.readFromRAM(addr, ref buff, 1, true);
+
+            if (!DolphinAccessor.readFromRAM(addr, ref buff, 1, true))
             {
                 DolphinAccessor.unHook();
             }
@@ -48,9 +74,16 @@ namespace ScoobyNET.Unmasked
 
         public static float[] getPosition()
         {
+            uint addr = 0x558854;
+
+            if (gametype == 1)
+            {
+                addr = addr + 0x10F7800;
+            }
+
             byte[] buff = new byte[4];
 
-            if (!DolphinAccessor.readFromRAM(0x558854, ref buff, 4, true))
+            if (!DolphinAccessor.readFromRAM(addr, ref buff, 4, true))
             {
                 DolphinAccessor.unHook();
                 return null;

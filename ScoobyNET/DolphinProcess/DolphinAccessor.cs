@@ -1,9 +1,6 @@
 ﻿#define _WIN32
 
-
-
 using System;
-using System.Linq;
 using DolphinComm.DolphinProcess;
 using DolphinComm.DolphinProcess.Windows;
 
@@ -77,7 +74,11 @@ namespace DolphinComm
 
         public static bool readFromRAM(uint offset, ref byte[] buffer, int size, bool withBSwap)
         {
-            return m_instance.readFromRAM(offset, ref buffer, size, withBSwap);
+            if (m_instance != null && DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.hooked)
+            {
+                return m_instance.readFromRAM(offset, ref buffer, size, withBSwap);
+            }
+            return false;
         }
 
         public static bool writeToRAM(uint offset, byte[] buffer, int size, bool withBSwap)

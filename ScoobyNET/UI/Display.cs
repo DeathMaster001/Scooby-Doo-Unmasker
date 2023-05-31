@@ -70,7 +70,7 @@ namespace ScoobyNET.UI
             {
                 StringBuilder message = new StringBuilder(1000);
                 Imports.SendMessage(handle, Imports.WM_GETTEXT, message.Capacity, message);
-                if (message.ToString().Contains("G5DE78"))
+                if (message.ToString().Contains("G5DE78") || message.ToString().Contains("G5DP78"))
                 {
                     gameWindow = handle;
                     break;

@@ -44,6 +44,13 @@ namespace ScoobyNET.Unmasked
 
         public static Dictionary<string, int> processInputs()
         {
+            uint addr = 0x23380C;
+
+            if (Unmasked.Memory.gametype == 1)
+            {
+                addr = addr + 0x42704;
+            }
+
             byte[] buff = new byte[4];
 
             if (!DolphinAccessor.readFromRAM((uint)0x23380C, ref buff, 4, true))

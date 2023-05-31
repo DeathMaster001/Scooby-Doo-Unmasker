@@ -47,7 +47,6 @@ namespace ScoobyNET.Unmasked
 			}
             else
             {
-				DolphinAccessor.unHook();
 				return "";
             }
 		}

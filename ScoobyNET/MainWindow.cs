@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DolphinComm;
 using DolphinComm.DolphinProcess;
 using System.Diagnostics;
+using static DolphinComm.DolphinAccessor;
 
 namespace ScoobyNET
 {
@@ -44,7 +45,7 @@ namespace ScoobyNET
             }
         }
 
-        DXUI.Overlay overlay;
+    DXUI.Overlay overlay;
 
 #if DEBUG 
         //Test button (delete later)
@@ -59,6 +60,7 @@ namespace ScoobyNET
             {
                 overlay.Dispose();
                 overlay = null;
+                OnHookAttempt();
             }
         }
 #else
@@ -66,7 +68,10 @@ namespace ScoobyNET
         {
         }
 #endif
-
+        private void clicktoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What... you expected something?\nJust cause it says Click doesn't mean you should Click it.\nNow click down below and get out of here.", "Nice you clicked something");
+        }
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -75,7 +80,7 @@ namespace ScoobyNET
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("A memory value viewer made for Scooby-Doo Unmasked! Made for use with the emulator Dolphin. " +
-                "Shows various in game values normally not seen during gameplay." +
+                "Lets you view various in game values normally hidden from the player" +
                 "\n\nThis program is licensed under the MIT License. " +
                 "You should have recieved a copy of the MIT license along with this program." +
                 "\n\nCredits:\nDeathMaster001 for coding and window design." +
@@ -87,25 +92,25 @@ namespace ScoobyNET
 
         private void updateDolphinHookingStatus()
         {
-            switch(DolphinAccessor.getStatus())
-            {
-                case DolphinAccessor.DolphinStatus.hooked:
-                    hooked_lbl.Text = "Hooked successfully to Dolphin, current start address: " + DolphinAccessor.getEmuRAMAddressStart().ToString("X");
-                    hook_button.Text = "Unhook";
-                    break;
-                case DolphinAccessor.DolphinStatus.notRunning:
-                    hooked_lbl.Text = "Cannot hook to Dolphin, the process is not running";
-                    hook_button.Text = "Hook";
-                    break;
-                case DolphinAccessor.DolphinStatus.noEmu:
-                    hooked_lbl.Text = "Cannot hook to Dolphin, the process is running, but no emulation has been started";
-                    hook_button.Text = "Hook";
-                    break;
-                case DolphinAccessor.DolphinStatus.unHooked:
-                    hooked_lbl.Text = "Unhooked, press \"Hook\" to hook to Dolphin again";
-                    hook_button.Text = "Hook";
-                    break;
-            }
+                switch (DolphinAccessor.getStatus())
+                {
+                    case DolphinAccessor.DolphinStatus.hooked:
+                        hooked_lbl.Text = "Hooked successfully to Dolphin, current start address: " + DolphinAccessor.getEmuRAMAddressStart().ToString("X");
+                        hook_button.Text = "Unhook";
+                        break;
+                    case DolphinAccessor.DolphinStatus.notRunning:
+                        hooked_lbl.Text = "Cannot hook to Dolphin, the process is not running.";
+                        hook_button.Text = "Hook";
+                        break;
+                    case DolphinAccessor.DolphinStatus.noEmu:
+                        hooked_lbl.Text = "Cannot hook to Dolphin, the process is running, but no emulation has been started.";
+                        hook_button.Text = "Hook";
+                        break;
+                    case DolphinAccessor.DolphinStatus.unHooked:
+                        hooked_lbl.Text = "Unhooked, press \"Hook\" to hook to Dolphin again.";
+                        hook_button.Text = "Hook";
+                        break;
+                }
         }
 
         private void OnHookAttempt()
@@ -127,21 +132,46 @@ namespace ScoobyNET
 #endif
             DolphinAccessor.hook();
             updateDolphinHookingStatus();
-            
+
             byte[] buff = new byte[6];
             DolphinAccessor.readFromRAM(0x0, ref buff, 6, true);
 
             // if game is the wrong game and is hooked
-
-            if(Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DE78" && DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.hooked)
+            if ((Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DE78" && Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DP78") && DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.hooked)
             {
-                MessageBox.Show("Unsupported game has been detected. Only Scooby-Doo Unmasked! (USA) is supported.");
                 OnUnHookAttempt();
+
+                // Pause for half a second asynchronously and show MessageBox explaining to the user that the program only works with Scooby-Doo Unmasked!
+                Task.Run(async () =>
+                {
+                    await Task.Delay(500);
+                    MessageBox.Show("An unsupported game has been detected. This program only supports the following games:\n\nScooby-Doo Unmasked! (NTSC) (G5DE78)\nScooby-Doo Unmasked! (PAL) (G5DP78)\n\nPlease rehook with the above game running instead.", "Unsupported Game");
+                });
+
+                return;
+            }
+            else if (DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.noEmu)
+            {
+                OnUnhookHide();
+                return;
+            }
+            else if (DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.notRunning)
+            {
+                OnUnhookHide();
                 return;
             }
 
             // enable controls
             OnUnhookShow();
+
+            if(Encoding.UTF8.GetString(buff, 0, buff.Length) == "G5DE78")
+            {
+                Unmasked.Memory.gametype = 0;
+            }
+            else if (Encoding.UTF8.GetString(buff, 0, buff.Length) == "G5DP78")
+            {
+                Unmasked.Memory.gametype = 1;
+            }
 
             // start timers
             watchTimer.Start();
@@ -192,9 +222,7 @@ namespace ScoobyNET
 
         private void WatchTimer_Tick(object sender, EventArgs e)
         {
-
             // abort if not hooked
-
             if (DolphinAccessor.getStatus() != DolphinAccessor.DolphinStatus.hooked)
                 OnUnHookAttempt();
 
@@ -225,7 +253,10 @@ namespace ScoobyNET
             if (POSDisplay_chkbx.Checked)
             {
                 float[] posCoords = Unmasked.Memory.getPosition();
-                overlay.Screentext += $"\nPosition:\n\tX: {posCoords[0].ToString("0.000")}\n\tY: {posCoords[1].ToString("0.000")}\n\tZ: {posCoords[2].ToString("0.000")}";
+                if (posCoords != null)
+                {
+                    overlay.Screentext += $"\nPosition:\n\tX: {posCoords[0].ToString("0.000")}\n\tY: {posCoords[1].ToString("0.000")}\n\tZ: {posCoords[2].ToString("0.000")}";
+                }
             }
 
             //Shows Player input on Screen.
