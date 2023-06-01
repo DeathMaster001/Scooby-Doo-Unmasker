@@ -97,14 +97,14 @@
             // clicktoolStripMenuItem1
             // 
             this.clicktoolStripMenuItem1.Name = "clicktoolStripMenuItem1";
-            this.clicktoolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.clicktoolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
             this.clicktoolStripMenuItem1.Text = "Click";
             this.clicktoolStripMenuItem1.Click += new System.EventHandler(this.clicktoolStripMenuItem1_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -154,7 +154,7 @@
             // HealthDisplay_chkbx
             // 
             this.HealthDisplay_chkbx.AutoSize = true;
-            this.HealthDisplay_chkbx.Location = new System.Drawing.Point(5, 16);
+            this.HealthDisplay_chkbx.Location = new System.Drawing.Point(8, 17);
             this.HealthDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.HealthDisplay_chkbx.Name = "HealthDisplay_chkbx";
             this.HealthDisplay_chkbx.Size = new System.Drawing.Size(103, 17);
@@ -191,7 +191,7 @@
             // MubberDisplay_chkbx
             // 
             this.MubberDisplay_chkbx.AutoSize = true;
-            this.MubberDisplay_chkbx.Location = new System.Drawing.Point(5, 37);
+            this.MubberDisplay_chkbx.Location = new System.Drawing.Point(8, 37);
             this.MubberDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.MubberDisplay_chkbx.Name = "MubberDisplay_chkbx";
             this.MubberDisplay_chkbx.Size = new System.Drawing.Size(108, 17);
@@ -202,7 +202,7 @@
             // InputDisplay_chkbx
             // 
             this.InputDisplay_chkbx.AutoSize = true;
-            this.InputDisplay_chkbx.Location = new System.Drawing.Point(5, 98);
+            this.InputDisplay_chkbx.Location = new System.Drawing.Point(8, 97);
             this.InputDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.InputDisplay_chkbx.Name = "InputDisplay_chkbx";
             this.InputDisplay_chkbx.Size = new System.Drawing.Size(87, 17);
@@ -243,7 +243,7 @@
             // WriteFile_chkbx
             // 
             this.WriteFile_chkbx.AutoSize = true;
-            this.WriteFile_chkbx.Location = new System.Drawing.Point(6, 16);
+            this.WriteFile_chkbx.Location = new System.Drawing.Point(8, 17);
             this.WriteFile_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.WriteFile_chkbx.Name = "WriteFile_chkbx";
             this.WriteFile_chkbx.Size = new System.Drawing.Size(99, 17);
@@ -265,7 +265,7 @@
             // CostumeDisplay_chkbx
             // 
             this.CostumeDisplay_chkbx.AutoSize = true;
-            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(8, 98);
+            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(8, 97);
             this.CostumeDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.CostumeDisplay_chkbx.Name = "CostumeDisplay_chkbx";
             this.CostumeDisplay_chkbx.Size = new System.Drawing.Size(128, 17);
@@ -298,7 +298,7 @@
             // LevelDisplay_chkbx
             // 
             this.LevelDisplay_chkbx.AutoSize = true;
-            this.LevelDisplay_chkbx.Location = new System.Drawing.Point(5, 57);
+            this.LevelDisplay_chkbx.Location = new System.Drawing.Point(8, 57);
             this.LevelDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.LevelDisplay_chkbx.Name = "LevelDisplay_chkbx";
             this.LevelDisplay_chkbx.Size = new System.Drawing.Size(89, 17);
@@ -309,7 +309,7 @@
             // POSDisplay_chkbx
             // 
             this.POSDisplay_chkbx.AutoSize = true;
-            this.POSDisplay_chkbx.Location = new System.Drawing.Point(5, 77);
+            this.POSDisplay_chkbx.Location = new System.Drawing.Point(8, 77);
             this.POSDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.POSDisplay_chkbx.Name = "POSDisplay_chkbx";
             this.POSDisplay_chkbx.Size = new System.Drawing.Size(100, 17);
