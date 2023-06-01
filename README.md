@@ -1,14 +1,14 @@
 # Scooby-Doo Unmasker
-A windowed memory value viewer made specifically for the GameCube game Scooby-Doo! Unmasked (G5DE78). Made for use with the Dolphin emulator. Intended to be used by speedrunners, glitch hunters and TAS creators.
+A memory value viewer made specifically for the GameCube game Scooby-Doo! Unmasked. Supports both the NTSC and PAL version. Made for use with the Dolphin emulator. Intended to be used by speedrunners, glitch hunters and TAS creators.
 
 ![Unmasked Windowed Tool in use 1](https://i.imgur.com/H8zu5Mp.png)
 ![Unmasked Windowed Tool in use 2](https://i.imgur.com/RU4Ab2Z.png)
 
 ## Current Features (With toggleable visibility)
 - Health, Mubber and Level Display.
-- Food and Mubber Requirements for Food Display (If applicable)
-- Clues, Trap Pieces and Costume Tokens Display.
 - Input and Position Viewer
+- Food Display and Mubber Requirements (If applicable)
+- Clues, Trap Pieces and Costume Tokens Display.
 
 ## Unmasked Lua Scripts
 If your interested, I have a similar project of Lua Scripts for Unmasked that works with the Dolphin Lua Core emulator, check it out [here](https://github.com/DeathMaster001/Scooby-Doo-Unmasked-Lua-Scripts).
