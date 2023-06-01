@@ -34,6 +34,9 @@
             this.clicktoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.writevalue_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.advancedModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hooked_lbl = new System.Windows.Forms.Label();
@@ -41,15 +44,17 @@
             this.HealthDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.FoodDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Stats_grp = new System.Windows.Forms.GroupBox();
-            this.MubberDisplay_chkbx = new System.Windows.Forms.CheckBox();
-            this.InputDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Collectibles_grp = new System.Windows.Forms.GroupBox();
             this.Misc_grp = new System.Windows.Forms.GroupBox();
+            this.levelselect_lbl2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.WriteFile_chkbx = new System.Windows.Forms.CheckBox();
             this.FoodMubber_chkbx = new System.Windows.Forms.CheckBox();
             this.CostumeDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.TrapDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.ClueDisplay_chkbx = new System.Windows.Forms.CheckBox();
+            this.MubberDisplay_chkbx = new System.Windows.Forms.CheckBox();
+            this.InputDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.LevelDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.POSDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
@@ -63,7 +68,7 @@
             this.hook_button.Location = new System.Drawing.Point(12, 60);
             this.hook_button.Margin = new System.Windows.Forms.Padding(2);
             this.hook_button.Name = "hook_button";
-            this.hook_button.Size = new System.Drawing.Size(452, 19);
+            this.hook_button.Size = new System.Drawing.Size(500, 19);
             this.hook_button.TabIndex = 0;
             this.hook_button.Text = "Hook";
             this.hook_button.UseVisualStyleBackColor = true;
@@ -76,12 +81,13 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(474, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(519, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -114,6 +120,29 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.writevalue_ToolStripMenuItem,
+            this.advancedModeToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // writevalue_ToolStripMenuItem
+            // 
+            this.writevalue_ToolStripMenuItem.Name = "writevalue_ToolStripMenuItem";
+            this.writevalue_ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.writevalue_ToolStripMenuItem.Text = "Simple Mode";
+            this.writevalue_ToolStripMenuItem.Click += new System.EventHandler(this.simplemode_ToolStripMenuItem_Click);
+            // 
+            // advancedModeToolStripMenuItem
+            // 
+            this.advancedModeToolStripMenuItem.Name = "advancedModeToolStripMenuItem";
+            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.advancedModeToolStripMenuItem.Text = "Advanced Mode";
+            this.advancedModeToolStripMenuItem.Click += new System.EventHandler(this.advancedModeToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -135,14 +164,14 @@
             this.hooked_lbl.Location = new System.Drawing.Point(7, 33);
             this.hooked_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hooked_lbl.Name = "hooked_lbl";
-            this.hooked_lbl.Size = new System.Drawing.Size(458, 16);
+            this.hooked_lbl.Size = new System.Drawing.Size(505, 16);
             this.hooked_lbl.TabIndex = 4;
             this.hooked_lbl.Text = "Cannot hook to Dolphin, the process is not running.";
             this.hooked_lbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(141, 189);
+            this.button1.Location = new System.Drawing.Point(187, 237);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(60, 19);
@@ -175,40 +204,18 @@
             // 
             // Stats_grp
             // 
+            this.Stats_grp.Controls.Add(this.Collectibles_grp);
             this.Stats_grp.Controls.Add(this.MubberDisplay_chkbx);
             this.Stats_grp.Controls.Add(this.InputDisplay_chkbx);
-            this.Stats_grp.Controls.Add(this.Collectibles_grp);
             this.Stats_grp.Controls.Add(this.LevelDisplay_chkbx);
             this.Stats_grp.Controls.Add(this.POSDisplay_chkbx);
             this.Stats_grp.Controls.Add(this.HealthDisplay_chkbx);
             this.Stats_grp.Location = new System.Drawing.Point(12, 84);
             this.Stats_grp.Name = "Stats_grp";
-            this.Stats_grp.Size = new System.Drawing.Size(452, 213);
+            this.Stats_grp.Size = new System.Drawing.Size(500, 261);
             this.Stats_grp.TabIndex = 8;
             this.Stats_grp.TabStop = false;
             this.Stats_grp.Text = "Stats";
-            // 
-            // MubberDisplay_chkbx
-            // 
-            this.MubberDisplay_chkbx.AutoSize = true;
-            this.MubberDisplay_chkbx.Location = new System.Drawing.Point(8, 37);
-            this.MubberDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
-            this.MubberDisplay_chkbx.Name = "MubberDisplay_chkbx";
-            this.MubberDisplay_chkbx.Size = new System.Drawing.Size(108, 17);
-            this.MubberDisplay_chkbx.TabIndex = 15;
-            this.MubberDisplay_chkbx.Text = "Scooby\'s Mubber";
-            this.MubberDisplay_chkbx.UseVisualStyleBackColor = true;
-            // 
-            // InputDisplay_chkbx
-            // 
-            this.InputDisplay_chkbx.AutoSize = true;
-            this.InputDisplay_chkbx.Location = new System.Drawing.Point(8, 97);
-            this.InputDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
-            this.InputDisplay_chkbx.Name = "InputDisplay_chkbx";
-            this.InputDisplay_chkbx.Size = new System.Drawing.Size(87, 17);
-            this.InputDisplay_chkbx.TabIndex = 14;
-            this.InputDisplay_chkbx.Text = "Input Display";
-            this.InputDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // Collectibles_grp
             // 
@@ -218,27 +225,67 @@
             this.Collectibles_grp.Controls.Add(this.TrapDisplay_chkbx);
             this.Collectibles_grp.Controls.Add(this.ClueDisplay_chkbx);
             this.Collectibles_grp.Controls.Add(this.FoodDisplay_chkbx);
-            this.Collectibles_grp.Location = new System.Drawing.Point(113, 0);
+            this.Collectibles_grp.Location = new System.Drawing.Point(112, 0);
             this.Collectibles_grp.Margin = new System.Windows.Forms.Padding(2);
             this.Collectibles_grp.Name = "Collectibles_grp";
             this.Collectibles_grp.Padding = new System.Windows.Forms.Padding(2);
-            this.Collectibles_grp.Size = new System.Drawing.Size(340, 213);
+            this.Collectibles_grp.Size = new System.Drawing.Size(387, 261);
             this.Collectibles_grp.TabIndex = 13;
             this.Collectibles_grp.TabStop = false;
             this.Collectibles_grp.Text = "Collectibles";
             // 
             // Misc_grp
             // 
+            this.Misc_grp.Controls.Add(this.levelselect_lbl2);
+            this.Misc_grp.Controls.Add(this.comboBox1);
             this.Misc_grp.Controls.Add(this.WriteFile_chkbx);
             this.Misc_grp.Controls.Add(this.button1);
             this.Misc_grp.Location = new System.Drawing.Point(135, 0);
             this.Misc_grp.Margin = new System.Windows.Forms.Padding(2);
             this.Misc_grp.Name = "Misc_grp";
             this.Misc_grp.Padding = new System.Windows.Forms.Padding(2);
-            this.Misc_grp.Size = new System.Drawing.Size(204, 213);
+            this.Misc_grp.Size = new System.Drawing.Size(253, 261);
             this.Misc_grp.TabIndex = 15;
             this.Misc_grp.TabStop = false;
             this.Misc_grp.Text = "Misc.";
+            // 
+            // levelselect_lbl2
+            // 
+            this.levelselect_lbl2.AutoSize = true;
+            this.levelselect_lbl2.Location = new System.Drawing.Point(5, 205);
+            this.levelselect_lbl2.Name = "levelselect_lbl2";
+            this.levelselect_lbl2.Size = new System.Drawing.Size(128, 26);
+            this.levelselect_lbl2.TabIndex = 19;
+            this.levelselect_lbl2.Text = "Level Select\r\n(Enter/Exit Level to Load)";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "",
+            "MFM 1",
+            "Chinatown Hub",
+            "Cookie Factory",
+            "Sewers",
+            "Temple",
+            "Warehouse - Dragon",
+            "Theme Park Hub",
+            "Haunted House",
+            "Water Park",
+            "Circus",
+            "House of Mirrors - Guitar Ghoul",
+            "Museum Hub",
+            "Dino",
+            "Medieval",
+            "Undersea",
+            "Planetarium - Caveman",
+            "MFM2",
+            "MFM3 - Pterodactyl"});
+            this.comboBox1.Location = new System.Drawing.Point(8, 234);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(174, 21);
+            this.comboBox1.TabIndex = 16;
             // 
             // WriteFile_chkbx
             // 
@@ -295,6 +342,28 @@
             this.ClueDisplay_chkbx.Text = "Clue Display";
             this.ClueDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
+            // MubberDisplay_chkbx
+            // 
+            this.MubberDisplay_chkbx.AutoSize = true;
+            this.MubberDisplay_chkbx.Location = new System.Drawing.Point(8, 37);
+            this.MubberDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
+            this.MubberDisplay_chkbx.Name = "MubberDisplay_chkbx";
+            this.MubberDisplay_chkbx.Size = new System.Drawing.Size(108, 17);
+            this.MubberDisplay_chkbx.TabIndex = 15;
+            this.MubberDisplay_chkbx.Text = "Scooby\'s Mubber";
+            this.MubberDisplay_chkbx.UseVisualStyleBackColor = true;
+            // 
+            // InputDisplay_chkbx
+            // 
+            this.InputDisplay_chkbx.AutoSize = true;
+            this.InputDisplay_chkbx.Location = new System.Drawing.Point(8, 97);
+            this.InputDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
+            this.InputDisplay_chkbx.Name = "InputDisplay_chkbx";
+            this.InputDisplay_chkbx.Size = new System.Drawing.Size(87, 17);
+            this.InputDisplay_chkbx.TabIndex = 14;
+            this.InputDisplay_chkbx.Text = "Input Display";
+            this.InputDisplay_chkbx.UseVisualStyleBackColor = true;
+            // 
             // LevelDisplay_chkbx
             // 
             this.LevelDisplay_chkbx.AutoSize = true;
@@ -321,11 +390,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 307);
-            this.Controls.Add(this.Stats_grp);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(519, 361);
             this.Controls.Add(this.hooked_lbl);
             this.Controls.Add(this.hook_button);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.Stats_grp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -347,29 +417,34 @@
         #endregion
 
         private System.Windows.Forms.Button hook_button;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Label hooked_lbl;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clicktoolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem writevalue_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem advancedModeToolStripMenuItem;
+        private System.Windows.Forms.Label hooked_lbl;
         private System.Windows.Forms.CheckBox HealthDisplay_chkbx;
         private System.Windows.Forms.CheckBox FoodDisplay_chkbx;
+        private System.Windows.Forms.CheckBox CostumeDisplay_chkbx;
+        private System.Windows.Forms.CheckBox InputDisplay_chkbx;
+        private System.Windows.Forms.CheckBox FoodMubber_chkbx;
+        private System.Windows.Forms.CheckBox MubberDisplay_chkbx;
         private System.Windows.Forms.GroupBox Stats_grp;
         private System.Windows.Forms.CheckBox WriteFile_chkbx;
         private System.Windows.Forms.CheckBox LevelDisplay_chkbx;
         private System.Windows.Forms.CheckBox POSDisplay_chkbx;
         private System.Windows.Forms.CheckBox TrapDisplay_chkbx;
         private System.Windows.Forms.CheckBox ClueDisplay_chkbx;
-        private System.Windows.Forms.GroupBox Collectibles_grp;
-        private System.Windows.Forms.CheckBox CostumeDisplay_chkbx;
-        private System.Windows.Forms.CheckBox InputDisplay_chkbx;
-        private System.Windows.Forms.CheckBox FoodMubber_chkbx;
         private System.Windows.Forms.GroupBox Misc_grp;
-        private System.Windows.Forms.CheckBox MubberDisplay_chkbx;
-        private System.Windows.Forms.ToolStripMenuItem clicktoolStripMenuItem1;
+        private System.Windows.Forms.GroupBox Collectibles_grp;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label levelselect_lbl2;
     }
 }
 

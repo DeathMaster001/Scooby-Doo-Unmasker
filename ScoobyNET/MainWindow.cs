@@ -431,5 +431,27 @@ namespace ScoobyNET
             overlay.Screentext = overlay.Screentext.Remove(0, 1);
 
         }
+
+        private void simplemode_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Size = new Size(535, 270);
+            hook_button.Size = new Size(500, 19);
+            hooked_lbl.Size = new Size(505, 16);
+            Stats_grp.Size = new Size(500, 124);
+            Collectibles_grp.Size = new Size(387, 124);
+            Misc_grp.Size = new Size(253, 124);
+            button1.Location = new Point(187, 100);
+        }
+
+        private void advancedModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Size = new Size(535, 400);
+            hook_button.Size = new Size(500, 19);
+            hooked_lbl.Size = new Size(505, 16);
+            Stats_grp.Size = new Size(500, 261);
+            Collectibles_grp.Size = new Size(387, 261);
+            Misc_grp.Size = new Size(253, 261);
+            button1.Location = new Point(187, 237);
+        }
     }
 }
