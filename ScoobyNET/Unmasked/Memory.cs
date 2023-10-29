@@ -72,6 +72,25 @@ namespace ScoobyNET.Unmasked
             return buff[0];
         }
 
+        public static uint setLevel()
+        {
+            uint addr = 0x5599F1;
+
+            if (gametype == 1)
+            {
+                addr = addr + 0x1E500;
+            }
+
+            byte[] buff = new byte[1];
+            DolphinAccessor.writeToRAM(addr, buff, 1, true);
+
+            if (!DolphinAccessor.readFromRAM(addr, ref buff, 1, true))
+            {
+                DolphinAccessor.unHook();
+            }
+            return buff[0];
+        }
+
         public static float[] getPosition()
         {
             uint addr = 0x558854;

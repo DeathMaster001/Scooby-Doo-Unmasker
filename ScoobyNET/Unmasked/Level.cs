@@ -50,5 +50,11 @@ namespace ScoobyNET.Unmasked
 				return "";
             }
 		}
+
+		public static int getLevelIdByName(string levelname)
+		{
+			return (int)levelLookup.FirstOrDefault(x => x.Value == levelname).Key;
+        }
+
     }
 }

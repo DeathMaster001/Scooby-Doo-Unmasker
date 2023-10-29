@@ -11,6 +11,7 @@ using DolphinComm;
 using DolphinComm.DolphinProcess;
 using System.Diagnostics;
 using static DolphinComm.DolphinAccessor;
+using ScoobyNET.Unmasked;
 
 namespace ScoobyNET
 {
@@ -452,6 +453,11 @@ namespace ScoobyNET
             Collectibles_grp.Size = new Size(387, 261);
             Misc_grp.Size = new Size(253, 261);
             button1.Location = new Point(187, 237);
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(Level.getLevelIdByName(comboBox1.Text).ToString());
         }
     }
 }
