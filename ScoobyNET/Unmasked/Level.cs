@@ -36,7 +36,7 @@ namespace ScoobyNET.Unmasked
 			[23] = "Planetarium - Caveman",
 			[25] = "MFM2",
 			[26] = "MFM3 - Pterodactyl",
-			[27] = "MFM2 Mystery Machine"
+			[27] = "Cutscene/MFM2 Mystery Machine"
 		};
 
 		public static string getLevelName()

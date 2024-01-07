@@ -174,7 +174,8 @@ namespace ScoobyNET.Unmasked
 			[20] = 0x559994,    //"Dino",
 			[21] = null,    //"Medieval",
 			[22] = 0x559996,    //"Undersea",
-		};
+            [27] = null,        //"MFM2 Mystery Machine",
+        };
 
         //levelmubberFoodMap for Unmasked! PAL
         private static Dictionary<uint, uint?> levelmubberFoodMap2 = new Dictionary<uint, uint?>
@@ -197,8 +198,9 @@ namespace ScoobyNET.Unmasked
             [18] = null,        //"House of Mirrors/\nGuitar Ghoul",
             [19] = null,        //"Museum Hub",
             [20] = 0x577E94,    //"Dino",
-            [21] = null,    //"Medieval",
+            [21] = null,		//"Medieval",
             [22] = 0x577E96,    //"Undersea",
+            [27] = null,        //"MFM2 Mystery Machine",
         };
 
         private static Dictionary<uint, string[]> mubberBitMap = new Dictionary<uint, string[]>
