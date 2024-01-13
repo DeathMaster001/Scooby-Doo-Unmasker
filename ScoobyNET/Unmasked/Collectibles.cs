@@ -492,7 +492,7 @@ namespace ScoobyNET.Unmasked
 			[27] = null,        //"MFM2 Mystery Machine",
 		};
 
-        //levelTrapMap for Unmasked! NTSC
+        //levelTrapMap for Unmasked! PAL
         private static Dictionary<uint, uint?> levelTrapMap2 = new Dictionary<uint, uint?>
         {
             [2] = null,         //"Monster Profiles",
@@ -591,7 +591,8 @@ namespace ScoobyNET.Unmasked
             }
 		}
 
-		private static Dictionary<uint, uint?> levelCostumeMap = new Dictionary<uint, uint?>
+        //levelCostumeMap for Unmasked! NTSC
+        private static Dictionary<uint, uint?> levelCostumeMap = new Dictionary<uint, uint?>
 		{
 			[2] = null,			//"Monster Profiles",
 			[3] = null,			//"Bonus Art",
@@ -619,6 +620,7 @@ namespace ScoobyNET.Unmasked
 			[27] = null,		//"MFM2 Mystery Machine",
 		};
 
+        //levelCostumeMap for Unmasked! PAL
         private static Dictionary<uint, uint?> levelCostumeMap2 = new Dictionary<uint, uint?>
         {
             [2] = null,         //"Monster Profiles",
