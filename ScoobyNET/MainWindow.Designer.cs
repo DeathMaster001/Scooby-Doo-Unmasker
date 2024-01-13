@@ -57,6 +57,7 @@
             this.InputDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.LevelDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.POSDisplay_chkbx = new System.Windows.Forms.CheckBox();
+            this.PercentageDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.Stats_grp.SuspendLayout();
             this.Collectibles_grp.SuspendLayout();
@@ -171,7 +172,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(187, 237);
+            this.button1.Location = new System.Drawing.Point(169, 237);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(60, 19);
@@ -204,6 +205,7 @@
             // 
             // Stats_grp
             // 
+            this.Stats_grp.Controls.Add(this.PercentageDisplay_chkbx);
             this.Stats_grp.Controls.Add(this.Collectibles_grp);
             this.Stats_grp.Controls.Add(this.MubberDisplay_chkbx);
             this.Stats_grp.Controls.Add(this.InputDisplay_chkbx);
@@ -225,11 +227,11 @@
             this.Collectibles_grp.Controls.Add(this.TrapDisplay_chkbx);
             this.Collectibles_grp.Controls.Add(this.ClueDisplay_chkbx);
             this.Collectibles_grp.Controls.Add(this.FoodDisplay_chkbx);
-            this.Collectibles_grp.Location = new System.Drawing.Point(112, 0);
+            this.Collectibles_grp.Location = new System.Drawing.Point(131, 0);
             this.Collectibles_grp.Margin = new System.Windows.Forms.Padding(2);
             this.Collectibles_grp.Name = "Collectibles_grp";
             this.Collectibles_grp.Padding = new System.Windows.Forms.Padding(2);
-            this.Collectibles_grp.Size = new System.Drawing.Size(387, 261);
+            this.Collectibles_grp.Size = new System.Drawing.Size(368, 261);
             this.Collectibles_grp.TabIndex = 13;
             this.Collectibles_grp.TabStop = false;
             this.Collectibles_grp.Text = "Collectibles";
@@ -244,7 +246,7 @@
             this.Misc_grp.Margin = new System.Windows.Forms.Padding(2);
             this.Misc_grp.Name = "Misc_grp";
             this.Misc_grp.Padding = new System.Windows.Forms.Padding(2);
-            this.Misc_grp.Size = new System.Drawing.Size(253, 261);
+            this.Misc_grp.Size = new System.Drawing.Size(234, 261);
             this.Misc_grp.TabIndex = 15;
             this.Misc_grp.TabStop = false;
             this.Misc_grp.Text = "Misc.";
@@ -282,9 +284,9 @@
             "Planetarium - Caveman",
             "MFM2",
             "MFM3 - Pterodactyl"});
-            this.comboBox1.Location = new System.Drawing.Point(8, 234);
+            this.comboBox1.Location = new System.Drawing.Point(5, 234);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(174, 21);
+            this.comboBox1.Size = new System.Drawing.Size(159, 21);
             this.comboBox1.TabIndex = 16;
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
@@ -387,6 +389,16 @@
             this.POSDisplay_chkbx.Text = "Position Display";
             this.POSDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
+            // PercentageDisplay_chkbx
+            // 
+            this.PercentageDisplay_chkbx.AutoSize = true;
+            this.PercentageDisplay_chkbx.Location = new System.Drawing.Point(8, 119);
+            this.PercentageDisplay_chkbx.Name = "PercentageDisplay_chkbx";
+            this.PercentageDisplay_chkbx.Size = new System.Drawing.Size(118, 17);
+            this.PercentageDisplay_chkbx.TabIndex = 16;
+            this.PercentageDisplay_chkbx.Text = "Percentage Display";
+            this.PercentageDisplay_chkbx.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,6 +458,7 @@
         private System.Windows.Forms.GroupBox Collectibles_grp;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label levelselect_lbl2;
+        private System.Windows.Forms.CheckBox PercentageDisplay_chkbx;
     }
 }
 
