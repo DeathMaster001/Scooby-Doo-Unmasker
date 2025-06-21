@@ -44,6 +44,7 @@
             this.HealthDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.FoodDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Stats_grp = new System.Windows.Forms.GroupBox();
+            this.PercentageDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Collectibles_grp = new System.Windows.Forms.GroupBox();
             this.Misc_grp = new System.Windows.Forms.GroupBox();
             this.levelselect_lbl2 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.InputDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.LevelDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.POSDisplay_chkbx = new System.Windows.Forms.CheckBox();
-            this.PercentageDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.Stats_grp.SuspendLayout();
             this.Collectibles_grp.SuspendLayout();
@@ -219,6 +219,16 @@
             this.Stats_grp.TabStop = false;
             this.Stats_grp.Text = "Stats";
             // 
+            // PercentageDisplay_chkbx
+            // 
+            this.PercentageDisplay_chkbx.AutoSize = true;
+            this.PercentageDisplay_chkbx.Location = new System.Drawing.Point(8, 77);
+            this.PercentageDisplay_chkbx.Name = "PercentageDisplay_chkbx";
+            this.PercentageDisplay_chkbx.Size = new System.Drawing.Size(112, 17);
+            this.PercentageDisplay_chkbx.TabIndex = 16;
+            this.PercentageDisplay_chkbx.Text = "Game Progression";
+            this.PercentageDisplay_chkbx.UseVisualStyleBackColor = true;
+            // 
             // Collectibles_grp
             // 
             this.Collectibles_grp.Controls.Add(this.Misc_grp);
@@ -359,7 +369,7 @@
             // InputDisplay_chkbx
             // 
             this.InputDisplay_chkbx.AutoSize = true;
-            this.InputDisplay_chkbx.Location = new System.Drawing.Point(8, 97);
+            this.InputDisplay_chkbx.Location = new System.Drawing.Point(8, 117);
             this.InputDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.InputDisplay_chkbx.Name = "InputDisplay_chkbx";
             this.InputDisplay_chkbx.Size = new System.Drawing.Size(87, 17);
@@ -373,31 +383,21 @@
             this.LevelDisplay_chkbx.Location = new System.Drawing.Point(8, 57);
             this.LevelDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.LevelDisplay_chkbx.Name = "LevelDisplay_chkbx";
-            this.LevelDisplay_chkbx.Size = new System.Drawing.Size(89, 17);
+            this.LevelDisplay_chkbx.Size = new System.Drawing.Size(114, 17);
             this.LevelDisplay_chkbx.TabIndex = 9;
-            this.LevelDisplay_chkbx.Text = "Level Display";
+            this.LevelDisplay_chkbx.Text = "Current Level/Hub";
             this.LevelDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // POSDisplay_chkbx
             // 
             this.POSDisplay_chkbx.AutoSize = true;
-            this.POSDisplay_chkbx.Location = new System.Drawing.Point(8, 77);
+            this.POSDisplay_chkbx.Location = new System.Drawing.Point(8, 97);
             this.POSDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.POSDisplay_chkbx.Name = "POSDisplay_chkbx";
-            this.POSDisplay_chkbx.Size = new System.Drawing.Size(100, 17);
+            this.POSDisplay_chkbx.Size = new System.Drawing.Size(109, 17);
             this.POSDisplay_chkbx.TabIndex = 8;
-            this.POSDisplay_chkbx.Text = "Position Display";
+            this.POSDisplay_chkbx.Text = "Scooby\'s Position";
             this.POSDisplay_chkbx.UseVisualStyleBackColor = true;
-            // 
-            // PercentageDisplay_chkbx
-            // 
-            this.PercentageDisplay_chkbx.AutoSize = true;
-            this.PercentageDisplay_chkbx.Location = new System.Drawing.Point(8, 119);
-            this.PercentageDisplay_chkbx.Name = "PercentageDisplay_chkbx";
-            this.PercentageDisplay_chkbx.Size = new System.Drawing.Size(118, 17);
-            this.PercentageDisplay_chkbx.TabIndex = 16;
-            this.PercentageDisplay_chkbx.Text = "Percentage Display";
-            this.PercentageDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 

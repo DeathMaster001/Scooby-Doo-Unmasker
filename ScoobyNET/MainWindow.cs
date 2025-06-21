@@ -247,7 +247,12 @@ namespace ScoobyNET
             //Shows Current Level on screen when the "Level Display" checkbox is checked.
             if (LevelDisplay_chkbx.Checked)
             {
-                overlay.Screentext += "\nLevel: " + Unmasked.Level.getLevelName();
+                overlay.Screentext += "\n\nLevel: " + Unmasked.Level.getLevelName();
+            }
+
+            if (PercentageDisplay_chkbx.Checked)
+            {
+                overlay.Screentext += "\nGame Completion: " + Unmasked.Memory.getProgression().ToString() + "%";
             }
 
             //Shows Scooby's X,Y,Z Position on screen when the position checkbox is checked
@@ -256,7 +261,7 @@ namespace ScoobyNET
                 float[] posCoords = Unmasked.Memory.getPosition();
                 if (posCoords != null)
                 {
-                    overlay.Screentext += $"\nPosition:\n\tX: {posCoords[0].ToString("0.000")}\n\tY: {posCoords[1].ToString("0.000")}\n\tZ: {posCoords[2].ToString("0.000")}";
+                    overlay.Screentext += $"\n\nPosition:\n\tX: {posCoords[0].ToString("0.000")}\n\tY: {posCoords[1].ToString("0.000")}\n\tZ: {posCoords[2].ToString("0.000")}";
                 }
             }
 
@@ -267,7 +272,7 @@ namespace ScoobyNET
                 overlay.Screentext += "\nInput:";
                 foreach (var input in inputDisplay)
                 {
-                    overlay.Screentext += "\n" + input.Key + " " + (input.Value);
+                    overlay.Screentext += "\n\t" + input.Key + " " + (input.Value);
                 }
             }
 
@@ -427,11 +432,6 @@ namespace ScoobyNET
                         overlay.Screentext += costumemsg;
                     }
                 }
-            }
-
-            if (PercentageDisplay_chkbx.Checked)
-            {
-                overlay.Screentext += "\n\nGame Completion: " + Unmasked.Memory.getProgression().ToString() + "%";
             }
             overlay.Screentext = overlay.Screentext.Remove(0, 1);
         }
