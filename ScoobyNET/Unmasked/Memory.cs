@@ -53,6 +53,26 @@ namespace ScoobyNET.Unmasked
             return BitConverter.ToUInt32(buff, 0);
         }
 
+        public static uint getProgression()
+        {
+            uint addr = 0x5599CC;
+
+            if (gametype == 1)
+            {
+                addr = addr + 0x1E500;
+            }
+
+            byte[] buff = new byte[4];
+            DolphinAccessor.readFromRAM(addr, ref buff, 4, true);
+
+            if (!DolphinAccessor.readFromRAM(addr, ref buff, 4, true))
+            {
+                DolphinAccessor.unHook();
+                return BitConverter.ToUInt32(buff, 0);
+            }
+            return BitConverter.ToUInt32(buff, 0);
+        }
+
         public static uint getLevel()
         {
             uint addr = 0x5599F1;

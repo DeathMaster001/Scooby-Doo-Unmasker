@@ -431,63 +431,7 @@ namespace ScoobyNET
 
             if (PercentageDisplay_chkbx.Checked)
             {
-                uint lvl = Unmasked.Memory.getLevel();
-                double completionpercentage;
-                completionpercentage = 0;
-                Dictionary<string, bool> levelFoods = Unmasked.Collectibles.getLevelFoods();
-                Dictionary<string, bool> levelClues = Unmasked.Collectibles.getLevelClues();
-                Dictionary<string, bool> levelTraps = Unmasked.Collectibles.getLevelTraps();
-                overlay.Screentext += "\n\nGame Completion: ";
-
-                if (lvl == 4)
-                {
-                    overlay.Screentext += completionpercentage + "%";
-                }
-                else if (lvl == 6)
-                {
-                    completionpercentage += 4;
-
-                    //semi works only increments completion upon collecting all clues and doesn't work past MFM 1.
-                    if (levelClues.Count != 0)
-                    {
-                        bool clueComplete = true;
-
-                        foreach (string clue in levelClues.Keys)
-                        {
-                            if (!levelClues[clue])
-                            {
-                                clueComplete = false;
-                            }
-                        }
-                        if (clueComplete)
-                        {
-                            completionpercentage += 1;
-                        }
-                    }
-
-                    //semi works only increments completion upon collecting all foods and doesn't work past MFM 1.
-                    if (levelFoods.Count != 0)
-                    {
-                        bool foodComplete = true;
-
-                        foreach (string food in levelFoods.Keys)
-                        {
-                            if (!levelFoods[food])
-                            {
-                                foodComplete = false;
-                            }
-                        }
-                        if (foodComplete)
-                        {
-                            completionpercentage += 1;
-                        }
-                    }
-                    overlay.Screentext += completionpercentage + "%";
-                }
-                else
-                {
-                    overlay.Screentext += completionpercentage + "%";
-                }
+                overlay.Screentext += "\n\nGame Completion: " + Unmasked.Memory.getProgression().ToString() + "%";
             }
             overlay.Screentext = overlay.Screentext.Remove(0, 1);
         }
