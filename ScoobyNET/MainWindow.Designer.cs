@@ -58,6 +58,8 @@
             this.InputDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.LevelDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.POSDisplay_chkbx = new System.Windows.Forms.CheckBox();
+            this.SelectCollectibles_chkbx = new System.Windows.Forms.CheckBox();
+            this.SelectStats_chkbx = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.Stats_grp.SuspendLayout();
             this.Collectibles_grp.SuspendLayout();
@@ -205,6 +207,7 @@
             // 
             // Stats_grp
             // 
+            this.Stats_grp.Controls.Add(this.SelectStats_chkbx);
             this.Stats_grp.Controls.Add(this.PercentageDisplay_chkbx);
             this.Stats_grp.Controls.Add(this.Collectibles_grp);
             this.Stats_grp.Controls.Add(this.MubberDisplay_chkbx);
@@ -231,6 +234,7 @@
             // 
             // Collectibles_grp
             // 
+            this.Collectibles_grp.Controls.Add(this.SelectCollectibles_chkbx);
             this.Collectibles_grp.Controls.Add(this.Misc_grp);
             this.Collectibles_grp.Controls.Add(this.FoodMubber_chkbx);
             this.Collectibles_grp.Controls.Add(this.CostumeDisplay_chkbx);
@@ -298,7 +302,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(159, 21);
             this.comboBox1.TabIndex = 16;
-            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // WriteFile_chkbx
             // 
@@ -399,6 +402,30 @@
             this.POSDisplay_chkbx.Text = "Scooby\'s Position";
             this.POSDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
+            // SelectCollectibles_chkbx
+            // 
+            this.SelectCollectibles_chkbx.AutoSize = true;
+            this.SelectCollectibles_chkbx.Location = new System.Drawing.Point(8, 217);
+            this.SelectCollectibles_chkbx.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectCollectibles_chkbx.Name = "SelectCollectibles_chkbx";
+            this.SelectCollectibles_chkbx.Size = new System.Drawing.Size(85, 30);
+            this.SelectCollectibles_chkbx.TabIndex = 13;
+            this.SelectCollectibles_chkbx.Text = "Select All\r\n(Collectibles)";
+            this.SelectCollectibles_chkbx.UseVisualStyleBackColor = true;
+            this.SelectCollectibles_chkbx.CheckedChanged += new System.EventHandler(this.SelectCollectibles_chkbx_CheckedChanged);
+            // 
+            // SelectStats_chkbx
+            // 
+            this.SelectStats_chkbx.AutoSize = true;
+            this.SelectStats_chkbx.Location = new System.Drawing.Point(8, 217);
+            this.SelectStats_chkbx.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectStats_chkbx.Name = "SelectStats_chkbx";
+            this.SelectStats_chkbx.Size = new System.Drawing.Size(70, 30);
+            this.SelectStats_chkbx.TabIndex = 13;
+            this.SelectStats_chkbx.Text = "Select All\r\n(Stats)";
+            this.SelectStats_chkbx.UseVisualStyleBackColor = true;
+            this.SelectStats_chkbx.CheckedChanged += new System.EventHandler(this.SelectStats_chkbx_CheckedChanged);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,6 +486,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label levelselect_lbl2;
         private System.Windows.Forms.CheckBox PercentageDisplay_chkbx;
+        private System.Windows.Forms.CheckBox SelectStats_chkbx;
+        private System.Windows.Forms.CheckBox SelectCollectibles_chkbx;
     }
 }
 

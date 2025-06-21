@@ -458,9 +458,27 @@ namespace ScoobyNET
             button1.Location = new Point(169, 237);
         }
 
-        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        private void SelectStats_chkbx_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(Level.getLevelIdByName(comboBox1.Text).ToString());
+            bool isChecked = SelectStats_chkbx.Checked;
+
+            HealthDisplay_chkbx.Checked = isChecked;
+            MubberDisplay_chkbx.Checked = isChecked;
+            LevelDisplay_chkbx.Checked = isChecked;
+            PercentageDisplay_chkbx.Checked = isChecked;
+            POSDisplay_chkbx.Checked = isChecked;
+            InputDisplay_chkbx.Checked = isChecked;
+        }
+
+        private void SelectCollectibles_chkbx_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = SelectCollectibles_chkbx.Checked;
+
+            FoodDisplay_chkbx.Checked = isChecked;
+            FoodMubber_chkbx.Checked = isChecked;
+            ClueDisplay_chkbx.Checked = isChecked;
+            TrapDisplay_chkbx.Checked = isChecked;
+            CostumeDisplay_chkbx.Checked = isChecked;
         }
     }
 }
