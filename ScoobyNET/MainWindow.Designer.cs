@@ -198,9 +198,9 @@
             this.FoodDisplay_chkbx.Location = new System.Drawing.Point(8, 17);
             this.FoodDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.FoodDisplay_chkbx.Name = "FoodDisplay_chkbx";
-            this.FoodDisplay_chkbx.Size = new System.Drawing.Size(87, 17);
+            this.FoodDisplay_chkbx.Size = new System.Drawing.Size(61, 17);
             this.FoodDisplay_chkbx.TabIndex = 7;
-            this.FoodDisplay_chkbx.Text = "Food Display";
+            this.FoodDisplay_chkbx.Text = "Food(s)";
             this.FoodDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // Stats_grp
@@ -317,42 +317,42 @@
             this.FoodMubber_chkbx.Location = new System.Drawing.Point(16, 37);
             this.FoodMubber_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.FoodMubber_chkbx.Name = "FoodMubber_chkbx";
-            this.FoodMubber_chkbx.Size = new System.Drawing.Size(121, 17);
+            this.FoodMubber_chkbx.Size = new System.Drawing.Size(89, 30);
             this.FoodMubber_chkbx.TabIndex = 14;
-            this.FoodMubber_chkbx.Text = "Food Mubber Totals";
+            this.FoodMubber_chkbx.Text = "Mubber Total\r\n(if applicable)";
             this.FoodMubber_chkbx.UseVisualStyleBackColor = true;
             // 
             // CostumeDisplay_chkbx
             // 
             this.CostumeDisplay_chkbx.AutoSize = true;
-            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(8, 97);
+            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(8, 117);
             this.CostumeDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.CostumeDisplay_chkbx.Name = "CostumeDisplay_chkbx";
-            this.CostumeDisplay_chkbx.Size = new System.Drawing.Size(128, 17);
+            this.CostumeDisplay_chkbx.Size = new System.Drawing.Size(96, 17);
             this.CostumeDisplay_chkbx.TabIndex = 13;
-            this.CostumeDisplay_chkbx.Text = "Costume Coin Display";
+            this.CostumeDisplay_chkbx.Text = "Costume Coins";
             this.CostumeDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // TrapDisplay_chkbx
             // 
             this.TrapDisplay_chkbx.AutoSize = true;
-            this.TrapDisplay_chkbx.Location = new System.Drawing.Point(8, 77);
+            this.TrapDisplay_chkbx.Location = new System.Drawing.Point(8, 97);
             this.TrapDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.TrapDisplay_chkbx.Name = "TrapDisplay_chkbx";
-            this.TrapDisplay_chkbx.Size = new System.Drawing.Size(85, 17);
+            this.TrapDisplay_chkbx.Size = new System.Drawing.Size(59, 17);
             this.TrapDisplay_chkbx.TabIndex = 12;
-            this.TrapDisplay_chkbx.Text = "Trap Display";
+            this.TrapDisplay_chkbx.Text = "Trap(s)";
             this.TrapDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // ClueDisplay_chkbx
             // 
             this.ClueDisplay_chkbx.AutoSize = true;
-            this.ClueDisplay_chkbx.Location = new System.Drawing.Point(8, 57);
+            this.ClueDisplay_chkbx.Location = new System.Drawing.Point(8, 77);
             this.ClueDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.ClueDisplay_chkbx.Name = "ClueDisplay_chkbx";
-            this.ClueDisplay_chkbx.Size = new System.Drawing.Size(84, 17);
+            this.ClueDisplay_chkbx.Size = new System.Drawing.Size(58, 17);
             this.ClueDisplay_chkbx.TabIndex = 11;
-            this.ClueDisplay_chkbx.Text = "Clue Display";
+            this.ClueDisplay_chkbx.Text = "Clue(s)";
             this.ClueDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // MubberDisplay_chkbx

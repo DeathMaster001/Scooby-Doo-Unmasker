@@ -399,18 +399,18 @@ namespace ScoobyNET
                 }
             }
 
-            //Shows Costume on screen when Costume checkbox is checked
+            //Shows Costume Coins on screen when Costume checkbox is checked
             if (CostumeDisplay_chkbx.Checked)
             {
                 Dictionary<string, bool> levelCostumes = Unmasked.Collectibles.getLevelCostumes();
 
                 if (levelCostumes.Count == 0)
                 {
-                    overlay.Screentext += "\n\nNo Costumes";
+                    overlay.Screentext += "\n\nNo Costume Coins";
                 }
                 else
                 {
-                    string costumemsg = "\n\nCostume(s): ";
+                    string costumemsg = "\n\nCostume Coins: ";
                     bool costumeComplete = true;
 
 
@@ -425,7 +425,7 @@ namespace ScoobyNET
                     }
                     if (costumeComplete)
                     {
-                        overlay.Screentext += "\n\nCostume Tokens Collected";
+                        overlay.Screentext += "\n\nCostume Coins Collected";
                     }
                     else
                     {
