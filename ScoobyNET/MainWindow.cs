@@ -31,7 +31,7 @@ namespace ScoobyNET
             writeTimer.Tick += WriteTimer_Tick;
             writeTimer.Start();
             DolphinAccessor.init();
-            firstHookAttempt();
+            this.Shown += (s, e) => firstHookAttempt();
         }
 
         private void hook_button_Click(object sender, EventArgs e)
@@ -117,7 +117,7 @@ namespace ScoobyNET
         private void OnHookAttempt()
         {
 #if DEBUG
-            button1.Visible = true;
+    button1.Visible = true;
 #else
             button1.Visible = false;
             if (overlay == null)
@@ -131,50 +131,52 @@ namespace ScoobyNET
                 overlay = null;
             }
 #endif
+
             DolphinAccessor.hook();
             updateDolphinHookingStatus();
 
             byte[] buff = new byte[6];
             DolphinAccessor.readFromRAM(0x0, ref buff, 6, true);
+            string gameId = Encoding.UTF8.GetString(buff, 0, buff.Length);
 
-            // if game is the wrong game and is hooked
-            if ((Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DE78" && Encoding.UTF8.GetString(buff, 0, buff.Length) != "G5DP78") && DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.hooked)
+            if (DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.hooked)
             {
-                OnUnHookAttempt();
-
-                // Pause for half a second asynchronously and show MessageBox explaining to the user that the program only works with Scooby-Doo Unmasked!
-                Task.Run(async () =>
+                // Check for unsupported game
+                if (gameId != "G5DE78" && gameId != "G5DP78")
                 {
-                    await Task.Delay(500);
-                    MessageBox.Show("An unsupported game has been detected. This program only supports the following games:\n\nScooby-Doo Unmasked! (NTSC) (G5DE78)\nScooby-Doo Unmasked! (PAL) (G5DP78)\n\nPlease rehook with the above game running instead.", "Unsupported Game");
-                });
+                    OnUnHookAttempt();              // Unhook immediately
+                    hook_button.Enabled = false;    // Disable button while MessageBox is up
 
-                return;
+                    // Run the MessageBox on the UI thread using proper delegate casting
+                    this.Invoke((MethodInvoker)(() =>
+                    {
+                        MessageBox.Show(this,
+                            "An unsupported game has been detected. This program only supports the following GameCube games:\n\nScooby-Doo Unmasked! (NTSC) (G5DE78)\nScooby-Doo Unmasked! (PAL) (G5DP78)\n\nPlease rehook with the above game running instead.",
+                            "Unsupported Game",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+
+                        hook_button.Enabled = true; // Re-enable the button after the MessageBox closes
+                    }));
+
+                    return;
+                }
             }
-            else if (DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.noEmu)
+            else if (DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.noEmu ||
+                     DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.notRunning)
             {
                 OnUnhookHide();
                 return;
             }
-            else if (DolphinAccessor.getStatus() == DolphinAccessor.DolphinStatus.notRunning)
-            {
-                OnUnhookHide();
-                return;
-            }
 
-            // enable controls
+            // enable controls and start timers for supported games
             OnUnhookShow();
 
-            if (Encoding.UTF8.GetString(buff, 0, buff.Length) == "G5DE78")
-            {
+            if (gameId == "G5DE78")
                 Unmasked.Memory.gametype = 0;
-            }
-            else if (Encoding.UTF8.GetString(buff, 0, buff.Length) == "G5DP78")
-            {
+            else if (gameId == "G5DP78")
                 Unmasked.Memory.gametype = 1;
-            }
 
-            // start timers
             watchTimer.Start();
         }
 

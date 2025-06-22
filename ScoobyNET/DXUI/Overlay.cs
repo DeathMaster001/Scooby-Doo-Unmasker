@@ -67,11 +67,6 @@ namespace ScoobyNET.DXUI
                 while (gameWindow == IntPtr.Zero)
                 {
                     gameWindow = FindDolphinWindow();
-                    if (gameWindow == IntPtr.Zero)
-                    {
-                        Console.WriteLine("Waiting for Dolphin...");
-                        Thread.Sleep(1000);
-                    }
                 }
 
                 var gfx = new Graphics()
