@@ -147,7 +147,6 @@ namespace ScoobyNET
                     OnUnHookAttempt();              // Unhook immediately
                     hook_button.Enabled = false;    // Disable button while MessageBox is up
 
-                    // Run the MessageBox on the UI thread using proper delegate casting
                     this.Invoke((MethodInvoker)(() =>
                     {
                         MessageBox.Show(this,
@@ -156,7 +155,8 @@ namespace ScoobyNET
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning);
 
-                        hook_button.Enabled = true; // Re-enable the button after the MessageBox closes
+                        // Re-enable the button after the MessageBox closes
+                        hook_button.Enabled = true;
                     }));
 
                     return;
@@ -169,7 +169,7 @@ namespace ScoobyNET
                 return;
             }
 
-            // enable controls and start timers for supported games
+            // enable controls and start timer for supported games
             OnUnhookShow();
 
             if (gameId == "G5DE78")
