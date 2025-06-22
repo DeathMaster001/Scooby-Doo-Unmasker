@@ -31,9 +31,7 @@
             this.hook_button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clicktoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.writevalue_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,8 +42,10 @@
             this.HealthDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.FoodDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Stats_grp = new System.Windows.Forms.GroupBox();
+            this.SelectStats_chkbx = new System.Windows.Forms.CheckBox();
             this.PercentageDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Collectibles_grp = new System.Windows.Forms.GroupBox();
+            this.SelectCollectibles_chkbx = new System.Windows.Forms.CheckBox();
             this.Misc_grp = new System.Windows.Forms.GroupBox();
             this.levelselect_lbl2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -58,8 +58,6 @@
             this.InputDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.LevelDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.POSDisplay_chkbx = new System.Windows.Forms.CheckBox();
-            this.SelectCollectibles_chkbx = new System.Windows.Forms.CheckBox();
-            this.SelectStats_chkbx = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.Stats_grp.SuspendLayout();
             this.Collectibles_grp.SuspendLayout();
@@ -83,7 +81,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -97,31 +94,17 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clicktoolStripMenuItem1,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // clicktoolStripMenuItem1
-            // 
-            this.clicktoolStripMenuItem1.Name = "clicktoolStripMenuItem1";
-            this.clicktoolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
-            this.clicktoolStripMenuItem1.Text = "Click";
-            this.clicktoolStripMenuItem1.Click += new System.EventHandler(this.clicktoolStripMenuItem1_Click);
-            // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
             // 
             // viewToolStripMenuItem
             // 
@@ -135,14 +118,14 @@
             // writevalue_ToolStripMenuItem
             // 
             this.writevalue_ToolStripMenuItem.Name = "writevalue_ToolStripMenuItem";
-            this.writevalue_ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.writevalue_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.writevalue_ToolStripMenuItem.Text = "Simple Mode";
             this.writevalue_ToolStripMenuItem.Click += new System.EventHandler(this.simplemode_ToolStripMenuItem_Click);
             // 
             // advancedModeToolStripMenuItem
             // 
             this.advancedModeToolStripMenuItem.Name = "advancedModeToolStripMenuItem";
-            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.advancedModeToolStripMenuItem.Text = "Advanced Mode";
             this.advancedModeToolStripMenuItem.Click += new System.EventHandler(this.advancedModeToolStripMenuItem_Click);
             // 
@@ -157,7 +140,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -222,6 +205,18 @@
             this.Stats_grp.TabStop = false;
             this.Stats_grp.Text = "Stats";
             // 
+            // SelectStats_chkbx
+            // 
+            this.SelectStats_chkbx.AutoSize = true;
+            this.SelectStats_chkbx.Location = new System.Drawing.Point(8, 217);
+            this.SelectStats_chkbx.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectStats_chkbx.Name = "SelectStats_chkbx";
+            this.SelectStats_chkbx.Size = new System.Drawing.Size(70, 30);
+            this.SelectStats_chkbx.TabIndex = 13;
+            this.SelectStats_chkbx.Text = "Select All\r\n(Stats)";
+            this.SelectStats_chkbx.UseVisualStyleBackColor = true;
+            this.SelectStats_chkbx.CheckedChanged += new System.EventHandler(this.SelectStats_chkbx_CheckedChanged);
+            // 
             // PercentageDisplay_chkbx
             // 
             this.PercentageDisplay_chkbx.AutoSize = true;
@@ -249,6 +244,18 @@
             this.Collectibles_grp.TabIndex = 13;
             this.Collectibles_grp.TabStop = false;
             this.Collectibles_grp.Text = "Collectibles";
+            // 
+            // SelectCollectibles_chkbx
+            // 
+            this.SelectCollectibles_chkbx.AutoSize = true;
+            this.SelectCollectibles_chkbx.Location = new System.Drawing.Point(8, 217);
+            this.SelectCollectibles_chkbx.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectCollectibles_chkbx.Name = "SelectCollectibles_chkbx";
+            this.SelectCollectibles_chkbx.Size = new System.Drawing.Size(85, 30);
+            this.SelectCollectibles_chkbx.TabIndex = 13;
+            this.SelectCollectibles_chkbx.Text = "Select All\r\n(Collectibles)";
+            this.SelectCollectibles_chkbx.UseVisualStyleBackColor = true;
+            this.SelectCollectibles_chkbx.CheckedChanged += new System.EventHandler(this.SelectCollectibles_chkbx_CheckedChanged);
             // 
             // Misc_grp
             // 
@@ -402,30 +409,6 @@
             this.POSDisplay_chkbx.Text = "Scooby\'s Position";
             this.POSDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
-            // SelectCollectibles_chkbx
-            // 
-            this.SelectCollectibles_chkbx.AutoSize = true;
-            this.SelectCollectibles_chkbx.Location = new System.Drawing.Point(8, 217);
-            this.SelectCollectibles_chkbx.Margin = new System.Windows.Forms.Padding(2);
-            this.SelectCollectibles_chkbx.Name = "SelectCollectibles_chkbx";
-            this.SelectCollectibles_chkbx.Size = new System.Drawing.Size(85, 30);
-            this.SelectCollectibles_chkbx.TabIndex = 13;
-            this.SelectCollectibles_chkbx.Text = "Select All\r\n(Collectibles)";
-            this.SelectCollectibles_chkbx.UseVisualStyleBackColor = true;
-            this.SelectCollectibles_chkbx.CheckedChanged += new System.EventHandler(this.SelectCollectibles_chkbx_CheckedChanged);
-            // 
-            // SelectStats_chkbx
-            // 
-            this.SelectStats_chkbx.AutoSize = true;
-            this.SelectStats_chkbx.Location = new System.Drawing.Point(8, 217);
-            this.SelectStats_chkbx.Margin = new System.Windows.Forms.Padding(2);
-            this.SelectStats_chkbx.Name = "SelectStats_chkbx";
-            this.SelectStats_chkbx.Size = new System.Drawing.Size(70, 30);
-            this.SelectStats_chkbx.TabIndex = 13;
-            this.SelectStats_chkbx.Text = "Select All\r\n(Stats)";
-            this.SelectStats_chkbx.UseVisualStyleBackColor = true;
-            this.SelectStats_chkbx.CheckedChanged += new System.EventHandler(this.SelectStats_chkbx_CheckedChanged);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -460,11 +443,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clicktoolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writevalue_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem advancedModeToolStripMenuItem;

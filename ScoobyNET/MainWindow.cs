@@ -69,10 +69,6 @@ namespace ScoobyNET
         {
         }
 #endif
-        private void clicktoolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("What... you expected something?\nJust cause it says Click doesn't mean you should Click it.\nNow click down below and get out of here.", "Nice you clicked something");
-        }
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
