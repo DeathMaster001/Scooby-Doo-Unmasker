@@ -42,11 +42,16 @@
             this.HealthDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.FoodDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Stats_grp = new System.Windows.Forms.GroupBox();
+            this.temp_chkbx = new System.Windows.Forms.CheckBox();
             this.SelectStats_chkbx = new System.Windows.Forms.CheckBox();
             this.PercentageDisplay_chkbx = new System.Windows.Forms.CheckBox();
             this.Collectibles_grp = new System.Windows.Forms.GroupBox();
             this.SelectCollectibles_chkbx = new System.Windows.Forms.CheckBox();
             this.Misc_grp = new System.Windows.Forms.GroupBox();
+            this.setPosition_btn = new System.Windows.Forms.Button();
+            this.zPos_txtbox = new System.Windows.Forms.TextBox();
+            this.yPos_txtbox = new System.Windows.Forms.TextBox();
+            this.xPos_txtbox = new System.Windows.Forms.TextBox();
             this.levelselect_lbl2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.WriteFile_chkbx = new System.Windows.Forms.CheckBox();
@@ -102,7 +107,7 @@
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -118,14 +123,14 @@
             // writevalue_ToolStripMenuItem
             // 
             this.writevalue_ToolStripMenuItem.Name = "writevalue_ToolStripMenuItem";
-            this.writevalue_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.writevalue_ToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.writevalue_ToolStripMenuItem.Text = "Simple Mode";
             this.writevalue_ToolStripMenuItem.Click += new System.EventHandler(this.simplemode_ToolStripMenuItem_Click);
             // 
             // advancedModeToolStripMenuItem
             // 
             this.advancedModeToolStripMenuItem.Name = "advancedModeToolStripMenuItem";
-            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.advancedModeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.advancedModeToolStripMenuItem.Text = "Advanced Mode";
             this.advancedModeToolStripMenuItem.Click += new System.EventHandler(this.advancedModeToolStripMenuItem_Click);
             // 
@@ -140,7 +145,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -205,6 +210,17 @@
             this.Stats_grp.TabStop = false;
             this.Stats_grp.Text = "Stats";
             // 
+            // temp_chkbx
+            // 
+            this.temp_chkbx.AutoSize = true;
+            this.temp_chkbx.Location = new System.Drawing.Point(8, 37);
+            this.temp_chkbx.Margin = new System.Windows.Forms.Padding(2);
+            this.temp_chkbx.Name = "temp_chkbx";
+            this.temp_chkbx.Size = new System.Drawing.Size(96, 17);
+            this.temp_chkbx.TabIndex = 16;
+            this.temp_chkbx.Text = "Clue 1 Position";
+            this.temp_chkbx.UseVisualStyleBackColor = true;
+            // 
             // SelectStats_chkbx
             // 
             this.SelectStats_chkbx.AutoSize = true;
@@ -259,6 +275,11 @@
             // 
             // Misc_grp
             // 
+            this.Misc_grp.Controls.Add(this.temp_chkbx);
+            this.Misc_grp.Controls.Add(this.setPosition_btn);
+            this.Misc_grp.Controls.Add(this.zPos_txtbox);
+            this.Misc_grp.Controls.Add(this.yPos_txtbox);
+            this.Misc_grp.Controls.Add(this.xPos_txtbox);
             this.Misc_grp.Controls.Add(this.levelselect_lbl2);
             this.Misc_grp.Controls.Add(this.comboBox1);
             this.Misc_grp.Controls.Add(this.WriteFile_chkbx);
@@ -271,6 +292,37 @@
             this.Misc_grp.TabIndex = 15;
             this.Misc_grp.TabStop = false;
             this.Misc_grp.Text = "Misc.";
+            // 
+            // setPosition_btn
+            // 
+            this.setPosition_btn.Location = new System.Drawing.Point(8, 117);
+            this.setPosition_btn.Name = "setPosition_btn";
+            this.setPosition_btn.Size = new System.Drawing.Size(75, 23);
+            this.setPosition_btn.TabIndex = 23;
+            this.setPosition_btn.Text = "Set Position";
+            this.setPosition_btn.UseVisualStyleBackColor = true;
+            this.setPosition_btn.Click += new System.EventHandler(this.setPosition_btn_Click);
+            // 
+            // zPos_txtbox
+            // 
+            this.zPos_txtbox.Location = new System.Drawing.Point(8, 97);
+            this.zPos_txtbox.Name = "zPos_txtbox";
+            this.zPos_txtbox.Size = new System.Drawing.Size(100, 20);
+            this.zPos_txtbox.TabIndex = 22;
+            // 
+            // yPos_txtbox
+            // 
+            this.yPos_txtbox.Location = new System.Drawing.Point(8, 77);
+            this.yPos_txtbox.Name = "yPos_txtbox";
+            this.yPos_txtbox.Size = new System.Drawing.Size(100, 20);
+            this.yPos_txtbox.TabIndex = 21;
+            // 
+            // xPos_txtbox
+            // 
+            this.xPos_txtbox.Location = new System.Drawing.Point(8, 57);
+            this.xPos_txtbox.Name = "xPos_txtbox";
+            this.xPos_txtbox.Size = new System.Drawing.Size(100, 20);
+            this.xPos_txtbox.TabIndex = 20;
             // 
             // levelselect_lbl2
             // 
@@ -469,6 +521,11 @@
         private System.Windows.Forms.CheckBox PercentageDisplay_chkbx;
         private System.Windows.Forms.CheckBox SelectStats_chkbx;
         private System.Windows.Forms.CheckBox SelectCollectibles_chkbx;
+        private System.Windows.Forms.CheckBox temp_chkbx;
+        private System.Windows.Forms.Button setPosition_btn;
+        private System.Windows.Forms.TextBox zPos_txtbox;
+        private System.Windows.Forms.TextBox yPos_txtbox;
+        private System.Windows.Forms.TextBox xPos_txtbox;
     }
 }
 

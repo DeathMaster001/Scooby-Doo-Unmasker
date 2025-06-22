@@ -208,6 +208,7 @@ namespace ScoobyNET
             TrapDisplay_chkbx.Checked = false;
             CostumeDisplay_chkbx.Checked = false;
             WriteFile_chkbx.Checked = false;
+            temp_chkbx.Checked = false;
         }
         private void OnUnhookShow()
         {
@@ -262,6 +263,17 @@ namespace ScoobyNET
                     overlay.Screentext += $"\n\nPosition:\n\tX: {posCoords[0].ToString("0.000")}\n\tY: {posCoords[1].ToString("0.000")}\n\tZ: {posCoords[2].ToString("0.000")}";
                 }
             }
+
+            //Shows Scooby's X,Y,Z Position on screen when the position checkbox is checked
+            if (temp_chkbx.Checked)
+            {
+                float[] posClueCoords = Unmasked.Memory.getObjectPosition(0x814F0840);
+                if (posClueCoords != null)
+                {
+                    overlay.Screentext += $"\n\nPosition:\n\tX: {posClueCoords[0]:0.000}\n\tY: {posClueCoords[1]:0.000}\n\tZ: {posClueCoords[2]:0.000}";
+                }
+            }
+
 
             //Shows Player input on Screen.
             if (InputDisplay_chkbx.Checked)
@@ -478,5 +490,25 @@ namespace ScoobyNET
             TrapDisplay_chkbx.Checked = isChecked;
             CostumeDisplay_chkbx.Checked = isChecked;
         }
+
+        private void setPosition_btn_Click(object sender, EventArgs e)
+        {
+            if (!float.TryParse(xPos_txtbox.Text, out float x) ||
+                !float.TryParse(yPos_txtbox.Text, out float y) ||
+                !float.TryParse(zPos_txtbox.Text, out float z))
+            {
+                MessageBox.Show("Invalid input for one or more coordinates!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            GameObject clue = new GameObject(0x814F0840, objectType.clue);
+            clue.setPosition(x, y, z);
+
+            /*if (!Unmasked.Memory.setObjectPosition(0x814F0840, x, y, z))
+            {
+                MessageBox.Show("Failed to write to memory!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
+        }
+
     }
 }

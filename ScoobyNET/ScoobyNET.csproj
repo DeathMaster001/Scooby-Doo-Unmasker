@@ -107,6 +107,8 @@
     <Compile Include="Unmasked\Input.cs" />
     <Compile Include="Unmasked\Level.cs" />
     <Compile Include="Unmasked\Memory.cs" />
+    <Compile Include="Unmasked\GameObject.cs" />
+    <Compile Include="Unmasked\Randomization.cs" />
     <Compile Include="Win32.cs" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
