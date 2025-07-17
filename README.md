@@ -1,5 +1,5 @@
 # Scooby-Doo Unmasker
-A memory value viewer made specifically for the GameCube game Scooby-Doo! Unmasked. Supports both the NTSC and PAL version. Made for use with the Dolphin emulator. Intended to be used by speedrunners, glitch hunters and TAS creators.
+A memory viewer/editor specifically for Scooby-Doo! Unmasked on the GameCube. Made for use with the Dolphin emulator. Supports both the NTSC and PAL version. Intended to be used by speedrunners, glitch hunters and TAS creators.
 
 ![Unmasked Windowed Tool in use 1](https://i.imgur.com/H8zu5Mp.png)
 ![Unmasked Windowed Tool in use 2](https://i.imgur.com/RU4Ab2Z.png)
