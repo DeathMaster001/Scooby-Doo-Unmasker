@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.hook_button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +68,18 @@
             this.Editor_grp = new System.Windows.Forms.GroupBox();
             this.Level_grp = new System.Windows.Forms.GroupBox();
             this.Viewer_grp = new System.Windows.Forms.GroupBox();
+            this.Health_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Mubber_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Position_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Input_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Level_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Progress_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.EDA_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Clues_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Foods_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Traps_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.Coins_tt = new System.Windows.Forms.ToolTip(this.components);
+            this.MFM1Soft_tt = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.Stats_grp.SuspendLayout();
             this.Collectibles_grp.SuspendLayout();
@@ -169,7 +182,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(161, 146);
+            this.button1.Location = new System.Drawing.Point(146, 146);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(60, 19);
@@ -187,6 +200,7 @@
             this.HealthDisplay_chkbx.Size = new System.Drawing.Size(103, 17);
             this.HealthDisplay_chkbx.TabIndex = 6;
             this.HealthDisplay_chkbx.Text = "Scooby\'s Health";
+            this.Health_tt.SetToolTip(this.HealthDisplay_chkbx, "Displays Scooby\'s health.");
             this.HealthDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // FoodDisplay_chkbx
@@ -198,6 +212,7 @@
             this.FoodDisplay_chkbx.Size = new System.Drawing.Size(61, 17);
             this.FoodDisplay_chkbx.TabIndex = 7;
             this.FoodDisplay_chkbx.Text = "Food(s)";
+            this.Foods_tt.SetToolTip(this.FoodDisplay_chkbx, "Displays Food(s) either collected or not if applicable.");
             this.FoodDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // Stats_grp
@@ -226,6 +241,7 @@
             this.SelectStats_chkbx.Size = new System.Drawing.Size(113, 17);
             this.SelectStats_chkbx.TabIndex = 13;
             this.SelectStats_chkbx.Text = "Enable/Disable All";
+            this.EDA_tt.SetToolTip(this.SelectStats_chkbx, "Check/uncheck all above checkboxes.");
             this.SelectStats_chkbx.UseVisualStyleBackColor = true;
             this.SelectStats_chkbx.CheckedChanged += new System.EventHandler(this.SelectStats_chkbx_CheckedChanged);
             // 
@@ -250,12 +266,13 @@
             // SelectCollectibles_chkbx
             // 
             this.SelectCollectibles_chkbx.AutoSize = true;
-            this.SelectCollectibles_chkbx.Location = new System.Drawing.Point(92, 148);
+            this.SelectCollectibles_chkbx.Location = new System.Drawing.Point(107, 148);
             this.SelectCollectibles_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.SelectCollectibles_chkbx.Name = "SelectCollectibles_chkbx";
             this.SelectCollectibles_chkbx.Size = new System.Drawing.Size(113, 17);
             this.SelectCollectibles_chkbx.TabIndex = 13;
             this.SelectCollectibles_chkbx.Text = "Enable/Disable All";
+            this.EDA_tt.SetToolTip(this.SelectCollectibles_chkbx, "Check/uncheck all above checkboxes.");
             this.SelectCollectibles_chkbx.UseVisualStyleBackColor = true;
             this.SelectCollectibles_chkbx.CheckedChanged += new System.EventHandler(this.SelectCollectibles_chkbx_CheckedChanged);
             // 
@@ -263,11 +280,11 @@
             // 
             this.Misc_grp.Controls.Add(this.WriteFile_chkbx);
             this.Misc_grp.Controls.Add(this.button1);
-            this.Misc_grp.Location = new System.Drawing.Point(209, 0);
+            this.Misc_grp.Location = new System.Drawing.Point(224, 0);
             this.Misc_grp.Margin = new System.Windows.Forms.Padding(2);
             this.Misc_grp.Name = "Misc_grp";
             this.Misc_grp.Padding = new System.Windows.Forms.Padding(2);
-            this.Misc_grp.Size = new System.Drawing.Size(225, 170);
+            this.Misc_grp.Size = new System.Drawing.Size(210, 170);
             this.Misc_grp.TabIndex = 15;
             this.Misc_grp.TabStop = false;
             this.Misc_grp.Text = "Misc.";
@@ -289,31 +306,33 @@
             this.FoodMubber_chkbx.Location = new System.Drawing.Point(116, 37);
             this.FoodMubber_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.FoodMubber_chkbx.Name = "FoodMubber_chkbx";
-            this.FoodMubber_chkbx.Size = new System.Drawing.Size(89, 30);
+            this.FoodMubber_chkbx.Size = new System.Drawing.Size(104, 17);
             this.FoodMubber_chkbx.TabIndex = 14;
-            this.FoodMubber_chkbx.Text = "Mubber Total\r\n(if applicable)";
+            this.FoodMubber_chkbx.Text = "Mubber for Food";
             this.FoodMubber_chkbx.UseVisualStyleBackColor = true;
             // 
             // CostumeDisplay_chkbx
             // 
             this.CostumeDisplay_chkbx.AutoSize = true;
-            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(92, 77);
+            this.CostumeDisplay_chkbx.Location = new System.Drawing.Point(92, 57);
             this.CostumeDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.CostumeDisplay_chkbx.Name = "CostumeDisplay_chkbx";
             this.CostumeDisplay_chkbx.Size = new System.Drawing.Size(96, 17);
             this.CostumeDisplay_chkbx.TabIndex = 13;
             this.CostumeDisplay_chkbx.Text = "Costume Coins";
+            this.Coins_tt.SetToolTip(this.CostumeDisplay_chkbx, "Displays Costume Coin(s) either collected or not if applicable.");
             this.CostumeDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // TrapDisplay_chkbx
             // 
             this.TrapDisplay_chkbx.AutoSize = true;
-            this.TrapDisplay_chkbx.Location = new System.Drawing.Point(8, 77);
+            this.TrapDisplay_chkbx.Location = new System.Drawing.Point(8, 57);
             this.TrapDisplay_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.TrapDisplay_chkbx.Name = "TrapDisplay_chkbx";
             this.TrapDisplay_chkbx.Size = new System.Drawing.Size(59, 17);
             this.TrapDisplay_chkbx.TabIndex = 12;
             this.TrapDisplay_chkbx.Text = "Trap(s)";
+            this.Traps_tt.SetToolTip(this.TrapDisplay_chkbx, "Displays Trap(s) either collected or not if applicable.");
             this.TrapDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // ClueDisplay_chkbx
@@ -325,6 +344,7 @@
             this.ClueDisplay_chkbx.Size = new System.Drawing.Size(58, 17);
             this.ClueDisplay_chkbx.TabIndex = 11;
             this.ClueDisplay_chkbx.Text = "Clue(s)";
+            this.Clues_tt.SetToolTip(this.ClueDisplay_chkbx, "Displays Clue(s) either collected or not if applicable.");
             this.ClueDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // PercentageDisplay_chkbx
@@ -335,6 +355,7 @@
             this.PercentageDisplay_chkbx.Size = new System.Drawing.Size(139, 17);
             this.PercentageDisplay_chkbx.TabIndex = 16;
             this.PercentageDisplay_chkbx.Text = "Progression Percentage";
+            this.Progress_tt.SetToolTip(this.PercentageDisplay_chkbx, "Displays player\'s progress as a percentage.");
             this.PercentageDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // MubberDisplay_chkbx
@@ -346,6 +367,7 @@
             this.MubberDisplay_chkbx.Size = new System.Drawing.Size(108, 17);
             this.MubberDisplay_chkbx.TabIndex = 15;
             this.MubberDisplay_chkbx.Text = "Scooby\'s Mubber";
+            this.Mubber_tt.SetToolTip(this.MubberDisplay_chkbx, "Displays Mubber total.");
             this.MubberDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // InputDisplay_chkbx
@@ -357,6 +379,7 @@
             this.InputDisplay_chkbx.Size = new System.Drawing.Size(87, 17);
             this.InputDisplay_chkbx.TabIndex = 14;
             this.InputDisplay_chkbx.Text = "Input Display";
+            this.Position_tt.SetToolTip(this.InputDisplay_chkbx, "Displays well... inputs.");
             this.InputDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // LevelDisplay_chkbx
@@ -368,6 +391,7 @@
             this.LevelDisplay_chkbx.Size = new System.Drawing.Size(114, 17);
             this.LevelDisplay_chkbx.TabIndex = 9;
             this.LevelDisplay_chkbx.Text = "Current Level/Hub";
+            this.Level_tt.SetToolTip(this.LevelDisplay_chkbx, "Displays Level or Hub the player is in/heading to.");
             this.LevelDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // POSDisplay_chkbx
@@ -379,6 +403,7 @@
             this.POSDisplay_chkbx.Size = new System.Drawing.Size(109, 17);
             this.POSDisplay_chkbx.TabIndex = 8;
             this.POSDisplay_chkbx.Text = "Scooby\'s Position";
+            this.Position_tt.SetToolTip(this.POSDisplay_chkbx, "Displays Scooby\'s X,Y and Z coordinates.");
             this.POSDisplay_chkbx.UseVisualStyleBackColor = true;
             // 
             // RestartLevel_chkbx
@@ -387,9 +412,11 @@
             this.RestartLevel_chkbx.Location = new System.Drawing.Point(8, 17);
             this.RestartLevel_chkbx.Margin = new System.Windows.Forms.Padding(2);
             this.RestartLevel_chkbx.Name = "RestartLevel_chkbx";
-            this.RestartLevel_chkbx.Size = new System.Drawing.Size(83, 30);
+            this.RestartLevel_chkbx.Size = new System.Drawing.Size(82, 30);
             this.RestartLevel_chkbx.TabIndex = 17;
-            this.RestartLevel_chkbx.Text = "Reset Level\r\n(Soft Reset)";
+            this.RestartLevel_chkbx.Text = "MFM1 \r\n(Soft Reset)";
+            this.MFM1Soft_tt.SetToolTip(this.RestartLevel_chkbx, "Soft resets MFM1. Must be in MFM1.\r\n\r\nNote: Cutscenes may/may not replay\r\nand col" +
+        "lected mubber will reset.");
             this.RestartLevel_chkbx.UseVisualStyleBackColor = true;
             this.RestartLevel_chkbx.CheckedChanged += new System.EventHandler(this.RestartLevel_chkbx_CheckedChanged);
             // 
@@ -584,6 +611,18 @@
         private System.Windows.Forms.GroupBox Editor_grp;
         private System.Windows.Forms.GroupBox Viewer_grp;
         private System.Windows.Forms.GroupBox Level_grp;
+        private System.Windows.Forms.ToolTip Health_tt;
+        private System.Windows.Forms.ToolTip Mubber_tt;
+        private System.Windows.Forms.ToolTip Position_tt;
+        private System.Windows.Forms.ToolTip Level_tt;
+        private System.Windows.Forms.ToolTip Input_tt;
+        private System.Windows.Forms.ToolTip Progress_tt;
+        private System.Windows.Forms.ToolTip EDA_tt;
+        private System.Windows.Forms.ToolTip Foods_tt;
+        private System.Windows.Forms.ToolTip Coins_tt;
+        private System.Windows.Forms.ToolTip Traps_tt;
+        private System.Windows.Forms.ToolTip Clues_tt;
+        private System.Windows.Forms.ToolTip MFM1Soft_tt;
     }
 }
 
