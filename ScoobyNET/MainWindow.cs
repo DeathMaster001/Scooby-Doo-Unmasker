@@ -482,6 +482,7 @@ namespace ScoobyNET
 
         private void SelectCollectibles_chkbx_CheckedChanged(object sender, EventArgs e)
         {
+            MessageBox.Show("Level Restarted.\n\nNote: the following will be reset\nCutscenes already watched will be replayed.\nCollectibles (If already collected don't respawn, but stay in inventory)");
             bool isChecked = SelectCollectibles_chkbx.Checked;
 
             FoodDisplay_chkbx.Checked = isChecked;
@@ -509,6 +510,14 @@ namespace ScoobyNET
                 MessageBox.Show("Failed to write to memory!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }*/
         }
-
+        private void RestartLevel_chkbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RestartLevel_chkbx.Checked)
+            {
+                Memory.resetLevel(); // This will write 1 to RAM
+                MessageBox.Show("Level Reset.\n");
+                RestartLevel_chkbx.Checked = false;
+            }
+        }
     }
 }

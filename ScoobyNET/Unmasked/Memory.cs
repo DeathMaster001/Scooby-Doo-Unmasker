@@ -195,8 +195,6 @@ namespace ScoobyNET.Unmasked
             return bytes;
         }
 
-
-
         public static bool setObjectPosition(uint address, float x, float y, float z)
         {
             uint virtualAddress = address;
@@ -209,6 +207,20 @@ namespace ScoobyNET.Unmasked
             Array.Copy(GetBigEndianBytes(z), 0, buff, 8, 4);
 
             return DolphinAccessor.writeToRAM(emuAddress, buff, 12, true);
+        }
+
+        public static void resetLevel()
+        {
+            uint addr = 0x559A2E;
+
+            if (gametype == 1)
+            {
+                addr += 0x1E500;
+            }
+
+            byte[] data = BitConverter.GetBytes(1); // Value 1 as byte[4]
+            Array.Reverse(data);
+            DolphinAccessor.writeToRAM(addr, data, data.Length, true);
         }
 
     }
