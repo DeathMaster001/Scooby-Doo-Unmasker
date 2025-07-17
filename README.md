@@ -5,10 +5,10 @@ A memory value viewer made specifically for the GameCube game Scooby-Doo! Unmask
 ![Unmasked Windowed Tool in use 2](https://i.imgur.com/RU4Ab2Z.png)
 
 ## Current Features (With toggleable visibility)
-- Health, Mubber and Level Display.
-- Input and Position Viewer
+- Health, Mubber and Level/Hub Display.
+- Game Progression, Input and Position Viewer.
 - Food Display and Mubber Requirements (If applicable)
-- Clues, Trap Pieces and Costume Tokens Display.
+- Clue(s), Trap(s) and Costume Coins Display.
 
 ## Unmasked Lua Scripts
 If your interested, I have a similar project of Lua Scripts for Unmasked that works with the Dolphin Lua Core emulator, check it out [here](https://github.com/DeathMaster001/Scooby-Doo-Unmasked-Lua-Scripts).
