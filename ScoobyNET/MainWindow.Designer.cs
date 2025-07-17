@@ -415,8 +415,9 @@
             this.RestartLevel_chkbx.Size = new System.Drawing.Size(82, 30);
             this.RestartLevel_chkbx.TabIndex = 17;
             this.RestartLevel_chkbx.Text = "MFM1 \r\n(Soft Reset)";
-            this.MFM1Soft_tt.SetToolTip(this.RestartLevel_chkbx, "Soft resets MFM1. Must be in MFM1.\r\n\r\nNote: Cutscenes may/may not replay\r\nand col" +
-        "lected mubber will reset.");
+            this.MFM1Soft_tt.SetToolTip(this.RestartLevel_chkbx, "Soft resets MFM1 and respawns\r\nScooby at level start.\r\n\r\nNote: Cutscenes may/may " +
+        "not replay\r\nand collected mubber will reset. Collected\r\nfood/clues remain untouc" +
+        "hed.");
             this.RestartLevel_chkbx.UseVisualStyleBackColor = true;
             this.RestartLevel_chkbx.CheckedChanged += new System.EventHandler(this.RestartLevel_chkbx_CheckedChanged);
             // 
