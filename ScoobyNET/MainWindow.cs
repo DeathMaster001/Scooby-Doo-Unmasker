@@ -196,23 +196,14 @@ namespace ScoobyNET
 
         private void OnUnhookHide()
         {
-            Stats_grp.Enabled = false;
-            HealthDisplay_chkbx.Checked = false;
-            MubberDisplay_chkbx.Checked = false;
-            LevelDisplay_chkbx.Checked = false;
-            POSDisplay_chkbx.Checked = false;
-            InputDisplay_chkbx.Checked = false;
-            FoodDisplay_chkbx.Checked = false;
-            FoodMubber_chkbx.Checked = false;
-            ClueDisplay_chkbx.Checked = false;
-            TrapDisplay_chkbx.Checked = false;
-            CostumeDisplay_chkbx.Checked = false;
-            WriteFile_chkbx.Checked = false;
-            temp_chkbx.Checked = false;
+            Viewer_grp.Enabled = false;
+            Editor_grp.Enabled = false;
+
         }
         private void OnUnhookShow()
         {
-            Stats_grp.Enabled = true;
+            Viewer_grp.Enabled = true;
+            Editor_grp.Enabled = true;
         }
 
         private void WriteTimer_Tick(object sender, EventArgs e)
@@ -290,53 +281,59 @@ namespace ScoobyNET
             if (FoodDisplay_chkbx.Checked)
             {
                 uint lvl = Unmasked.Memory.getLevel();
-                Dictionary<string, bool> levelFoods = Unmasked.Collectibles.getLevelFoods();
-                Dictionary<string, bool> levelmubberFoods = Unmasked.Collectibles.getLevelFoodsMubber();
+                var levelFoods = Unmasked.Collectibles.getLevelFoods();
+                var levelmubberFoods = Unmasked.Collectibles.getLevelFoodsMubber();
 
                 if (levelFoods.Count == 0)
                 {
                     overlay.Screentext += "\n\nNo Foods";
+                    return;
                 }
-                else
-                {
-                    string foodmsg = "\n\nFood(s): ";
-                    bool foodComplete = true;
 
-                    //foreach loop writes each food to screen
-                    foreach (string food in levelFoods.Keys)
+                var foodmsg = new StringBuilder("\n\nFood(s):\n");
+                bool foodComplete = true;
+
+                // Mubber requirements per level
+                var mubberRequirements = new Dictionary<uint, string>
+                {
+                    { 6, "Chocolate Bar" },
+                    { 8, "Apple" },
+                    { 9, "Pepperoni" },
+                    { 11, "Carrot" },
+                    { 14, "Broccoli" },
+                    { 17, "Eggplant" },
+                    { 20, "Marshmallows" },
+                    { 22, "Cotton Candy" }
+                };
+
+                foreach (var kvp in levelFoods)
+                {
+                    string food = kvp.Key;
+                    bool collected = kvp.Value;
+                    string line = $"{food} {(collected ? "[*]" : "[]")}";
+
+                    if (!collected)
                     {
-                        foodmsg += "\n" + food + " " + (levelFoods[food] ? "[*]" : "[]");
-                        if (!levelFoods[food])
+                        foodComplete = false;
+
+                        if (FoodMubber_chkbx.Checked &&
+                            mubberRequirements.TryGetValue(lvl, out string requiredFood) &&
+                            requiredFood == food)
                         {
-                            foodComplete = false;
-                        }
-                        //if FoodMubber checkbox is checked, the required mubber for the respective mubber machine is shown.
-                        if (FoodMubber_chkbx.Checked)
-                        {
-                            foreach (string mubberfood in levelmubberFoods.Keys)
+                            foreach (var mubberfood in levelmubberFoods.Keys)
                             {
-                                if (foodComplete == false)
-                                {
-                                    //write code that does this if statement more effectively and efficiently
-                                    if (lvl == 6 && food == "Chocolate Bar" || lvl == 8 && food == "Apple" || lvl == 9 && food == "Pepperoni" || lvl == 11 && food == "Carrot" || lvl == 14 && food == "Broccoli" || lvl == 17 && food == "Eggplant" || lvl == 20 && food == "Marshmallows" || lvl == 22 && food == "Cotton Candy")
-                                    {
-                                        foodmsg += " " + mubberfood + " Mubber";
-                                    }
-                                }
+                                line += $" {mubberfood} Mubber";
+                                break;
                             }
                         }
                     }
-                    if (foodComplete)
-                    {
-                        overlay.Screentext += "\n\nAll Foods Collected";
-                    }
-                    else
-                    {
-                        overlay.Screentext += foodmsg;
-                    }
+
+                    foodmsg.AppendLine(line);
                 }
 
+                overlay.Screentext += foodComplete ? "\n\nAll Foods Collected" : foodmsg.ToString();
             }
+
 
             //Shows Clues on screen when Clue checkbox is checked
             if (ClueDisplay_chkbx.Checked)
